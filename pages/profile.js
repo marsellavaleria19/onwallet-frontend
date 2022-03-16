@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Input from "../component/Input";
 // import NavbarComponent from "../component/NavbarComponent";
 
-const Receiver= () =>{
+const Profile= () =>{
     return (
         <Layout>          
             <div className={information.information}>
@@ -33,4 +33,4 @@ const Receiver= () =>{
     )
 }
 
-export default Receiver
+export default Profile
