@@ -5,4 +5,4 @@ const Input = ({children,...rest})=>{
     <BsInput {...rest}>{rest}</BsInput>)
 }
 
-export default Button
+export default Input
