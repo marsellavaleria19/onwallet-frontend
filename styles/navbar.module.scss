@@ -1,0 +1,32 @@
+
+// @import './color.scss';
+
+$font-family:'Nunito Sans';
+
+// @import 'bootstrap/scss/bootstrap';
+
+.navbarLight {
+    background-color: #7579E7;
+    height: 140px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.navbarBrand{
+    font-family: $font-family;
+    font-size: 29px;
+    font-weight: 700;
+}
+
+.textName {
+    font-family: $font-family;
+    font-size: 18px;
+    font-weight: 70px;
+    color: white;
+}
+
+.textPhone {
+    font-family: $font-family;
+    font-size: 13px;
+    color: white;
+}
