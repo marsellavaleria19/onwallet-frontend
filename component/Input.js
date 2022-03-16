@@ -1,8 +1,10 @@
-import { Input as BsInput} from "react-bootstrap";
+import { Form} from "react-bootstrap";
 
 const Input = ({children,...rest})=>{
     return(
-    <BsInput {...rest}>{rest}</BsInput>)
+        <Form.Control
+        {...rest}
+      />)
 }
 
 export default Input
