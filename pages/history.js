@@ -2,7 +2,7 @@
 import { Col, Row } from "react-bootstrap";
 import CButton from "../component/CButton";
 import Layout from "../component/Layout";
-import variables from "../styles/home.module.scss";
+import variables from "../styles/information.module.scss";
 import Image from 'next/image';
 // import NavbarComponent from "../component/NavbarComponent";
 
