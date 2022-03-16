@@ -14,40 +14,40 @@ const Receiver= () =>{
                 <Container className="pt-3">
                     <div className="fs-5 mb-3 fw-bold">Search Receiver</div>
                     <Input type="text" placeholder="Search" className={variables.search}/>   
-                    <Row className="pt-3 ps-3">
+                    <Row className={`${variables.listReceiver} mt-3 mb-3 ms-3`}>
                         <Col xs={2}>
-                            <Image src="/images/1.png" width={50} height={50}/>
+                            <Image src="/images/2.png" width={50} height={50}/>
                         </Col>
                         <Col xs={5}>
-                            <div className="fs-4">Christine Mar...</div>
-                            <div className="fs-6">Accept</div>
-                        </Col>
-                        <Col>
-                            <div className="fs-4">+Rp50.000</div>
+                            <div className="fs-4">Jessica Keen</div>
+                            <div className="fs-6">+62 811-3452-5252</div>
                         </Col>
                     </Row>
-                    <Row className="mt-3 ms-2">
+                    <Row className={`${variables.listReceiver} mb-3 ms-3`}>
                         <Col xs={2}>
-                            <Image src="/images/1.png" width={50} height={50}/>
+                            <Image src="/images/2.png" width={50} height={50}/>
                         </Col>
                         <Col xs={5}>
-                            <div className="fs-4">Christine Mar...</div>
-                            <div className="fs-6">Accept</div>
-                        </Col>
-                        <Col>
-                            <div className="fs-4">+Rp50.000</div>
+                            <div className="fs-4">Jessica Keen</div>
+                            <div className="fs-6">+62 811-3452-5252</div>
                         </Col>
                     </Row>
-                    <Row className="mt-3 ms-2">
+                    <Row className={`${variables.listReceiver} mb-3 ms-3`}>
                         <Col xs={2}>
-                            <Image src="/images/1.png" width={50} height={50}/>
+                            <Image src="/images/2.png" width={50} height={50}/>
                         </Col>
                         <Col xs={5}>
-                            <div className="fs-4">Christine Mar...</div>
-                            <div className="fs-6">Accept</div>
+                            <div className="fs-4">Jessica Keen</div>
+                            <div className="fs-6">+62 811-3452-5252</div>
                         </Col>
-                        <Col>
-                            <div className="fs-4">+Rp50.000</div>
+                    </Row>
+                    <Row className={`${variables.listReceiver} mb-3 ms-3`}>
+                        <Col xs={2}>
+                            <Image src="/images/2.png" width={50} height={50}/>
+                        </Col>
+                        <Col xs={5}>
+                            <div className="fs-4">Jessica Keen</div>
+                            <div className="fs-6">+62 811-3452-5252</div>
                         </Col>
                     </Row>
                 </Container>
