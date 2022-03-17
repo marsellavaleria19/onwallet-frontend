@@ -12,7 +12,7 @@ const Layout = (props)=>{
                         <Col md="4">
                             <Menu/>
                         </Col>
-                        <Col>
+                        <Col md="8">
                         {props.children}
                         </Col>
                     </Row>
