@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Input from "../component/Input";
 // import NavbarComponent from "../component/NavbarComponent";
 
-const Status= () =>{
+const PersonalInformation= () =>{
     return (
         <Layout>          
             <div className={information.information}>
@@ -52,4 +52,4 @@ const Status= () =>{
     )
 }
 
-export default Status
+export default PersonalInformation
