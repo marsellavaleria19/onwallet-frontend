@@ -6,6 +6,21 @@
     width : 100%;
 }
 
+.textTransfer{
+    border:none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+
+.textTransfer:focus {
+    outline: none;
+    box-shadow: unset;
+}
+
+
 // .information{
 //     background-color: $primary;
 //     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
