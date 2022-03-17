@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import CButton from "../component/CButton";
 import Layout from "../component/Layout";
 import information from "../styles/information.module.scss";
-import variables from "../styles/receiver.module.scss";
+import variables from "../styles/transaction.module.scss";
 import Image from 'next/image';
 import Input from "../component/Input";
 // import NavbarComponent from "../component/NavbarComponent";
