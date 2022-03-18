@@ -8,9 +8,10 @@ import {MdOutlineMailOutline} from "react-icons/md"
 import {BiLockAlt,} from 'react-icons/bi'
 import {AiOutlineUser} from 'react-icons/ai'
 import LayoutLogin from "../component/LayoutLogin";
+import Link from 'next/link'
 // import NavbarComponent from "../component/NavbarComponent";
 
-const Home = () =>{
+const Register = () =>{
     return (
         <LayoutLogin>
             <div className="vh-100 overflow-auto">
@@ -35,7 +36,7 @@ const Home = () =>{
                             <div className="mt-5">
                                 <CButton className={input.button}>Signup</CButton>
                             </div>
-                            <div className="text-primary mt-5 text-center">Already have an account? Let's Login</div>
+                            <div className="text-primary mt-5 text-center">Already have an account? Let&apos;s <Link href="/login"><a className="fw-bold">Login</a></Link></div>
                         </div>
                     </form>
                 </div>
@@ -43,4 +44,4 @@ const Home = () =>{
     )
 }
 
-export default Home
+export default Register

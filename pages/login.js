@@ -7,6 +7,7 @@ import input from "../styles/input.module.scss";
 import {MdOutlineMailOutline} from "react-icons/md"
 import {BiLockAlt,} from 'react-icons/bi'
 import LayoutLogin from "../component/LayoutLogin";
+import Link from 'next/link'
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Login = () =>{
@@ -28,7 +29,7 @@ const Login = () =>{
                             <div className="mt-5">
                                 <CButton className={input.button}>Login</CButton>
                             </div>
-                            <div className="text-primary mt-3 text-center">Don't have an account? Let's Sign Up</div>
+                            <div className="text-primary mt-3 text-center">Don&apos;t have an account? Let&apos;s <Link href="/register" className="fw-bold">Signup</Link></div>
                         </div>
                     </form>
                 </div>   
