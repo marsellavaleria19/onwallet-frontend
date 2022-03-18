@@ -81,6 +81,12 @@ $primary: #7579E7;
     outline: none;
     background-color: transparent;
     box-shadow: unset;
+    color:$primary
+}
+
+.error{
+    color: red;
+    font-size: 14px;
 }
 
 @media(max-width:500px) {

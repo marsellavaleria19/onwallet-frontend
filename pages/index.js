@@ -99,7 +99,7 @@ export default function Home() {
           <Row>
               <Col md={5}>
                 <div clssName="position-relative">
-                  <Image src="/images/phone-cover.png" className='msposition-absolute' width={800} height={1015} alt="phone1"/>
+                  <Image src="/images/phone-cover.png" className='msposition-absolute' width={900} height={1500} alt="phone1"/>
                 </div>
               </Col>
               <Col md={7}>
