@@ -17,8 +17,6 @@ const verifyPin = ({registrationProcess}) =>{
     
     const handlePin = (event)=>{
         event.preventDefault()
-        console.log(registration.data)
-        console.log("pin"+pin)
         registrationProcess(registration.data,pin)
         router.push('/register/success-verify')
     }

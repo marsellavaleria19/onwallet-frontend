@@ -1,16 +1,15 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row } from "react-bootstrap";
-import CButton from "../component/CButton";
-import Input from "../component/Input";
-import login from "../styles/form-login.module.scss";
-import input from "../styles/input.module.scss";
+import CButton from "../../component/CButton";
+import Input from "../../component/Input";
+import input from "../../styles/input.module.scss";
 import {MdOutlineMailOutline} from "react-icons/md"
 import {BiLockAlt,} from 'react-icons/bi'
 import {AiOutlineUser} from 'react-icons/ai'
-import LayoutLogin from "../component/LayoutLogin";
+import LayoutLogin from "../../component/LayoutLogin";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
-import { getDataRegistration } from "../redux/actions/registration";
+import { getDataRegistration } from "../../redux/actions/registration";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";

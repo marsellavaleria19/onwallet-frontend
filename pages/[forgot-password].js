@@ -1,10 +1,10 @@
 // import { Button } from "bootstrap";
-import { Col, Container, Row } from "react-bootstrap";
+// import { Col, Container, Row } from "react-bootstrap";
 import CButton from "../component/CButton";
 import Input from "../component/Input";
-import login from "../styles/form-login.module.scss";
+// import login from "../styles/form-login.module.scss";
 import input from "../styles/input.module.scss";
-import {MdOutlineMailOutline} from "react-icons/md"
+// import {MdOutlineMailOutline} from "react-icons/md"
 import {BiLockAlt,} from 'react-icons/bi'
 import LayoutLogin from "../component/LayoutLogin";
 // import NavbarComponent from "../component/NavbarComponent";
