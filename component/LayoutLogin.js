@@ -19,7 +19,7 @@ const LayoutLogin = (props) =>{
                             <div className="fs-3 text-white fw-bold">App that Covering Banking Needs.</div>
                             <div className="fs-5 text-white mt-3 mb-5">Zwallet is an application that focussing in banking needs for all users
                                 in the world. Always updated and always following world trends.
-                                5000+ users registered in Zwallet everyday with worldwide
+                                5000+ users registered in On-Wallet everyday with worldwide
                                 users coverage.
                             </div>
                         </div>

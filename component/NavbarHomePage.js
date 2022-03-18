@@ -1,4 +1,5 @@
 import { Navbar,Container } from "react-bootstrap";
+import Link from 'next/link'
 import navbar from '../styles/navbar.module.scss'
 import Image from 'next/image'
 import CButton from "./CButton";
@@ -10,8 +11,8 @@ const NavbarHomepage = ()=>{
           <Navbar.Brand className={navbar.navbarBrand} href="#home">On-Wallet</Navbar.Brand>
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
-            <CButton className={`${navbar.buttonLogin} me-3`}>Login</CButton>
-            <CButton className={navbar.buttonRegister}>Sign Up</CButton>
+            <Link href="/login"><a className={`btn ${navbar.buttonLogin} me-3`}>Login</a></Link>
+            <Link href="/register"><a className={`btn ${navbar.buttonRegister}`}></a>Sign Up</Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>
