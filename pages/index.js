@@ -4,7 +4,7 @@ import { Container, Navbar,Row,Col } from 'react-bootstrap'
 import homepage from '../styles/homepage.module.scss'
 import NavbarHomepage from '../component/NavbarHomePage'
 import CButton from '../component/CButton'
-import {AiOutlinePhone} from 'react-icons/ai'
+import {AiOutlinePhone,AiOutlineArrowLeft} from 'react-icons/ai'
 import {BiLockAlt,} from 'react-icons/bi'
 import {BsDownload} from 'react-icons/bs'
 // import styles from '../styles/Home.module.css'
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
       <section className={homepage.sectionAboutWallet}>
           <Container>
-              <Row>
+              <Row className='d-flex justify-content-center align-items-center'>
                 <Col xs="4" md="3" lg="2">
                   <Image src="/images/microsoft.png" width={300} height={200} alt="microsoft" className='align-items-center'/>
                 </Col>
@@ -99,15 +99,14 @@ export default function Home() {
           <Row>
               <Col md={5}>
                 <div clssName="position-relative">
-                  {/* <Image src="/images/png-phone2.png" className='msposition-absolute' width={300} height={400} alt="phone1"/>
-                  <Image src="/images/png-phone.png" className='ms-0position-absolute' width={300} height={400} alt="phone1"/> */}
+                  <Image src="/images/phone-cover.png" className='msposition-absolute' width={800} height={1015} alt="phone1"/>
                 </div>
               </Col>
               <Col md={7}>
-                <h1 className={`${homepage.description} mt-5 fw-bold text-primary`}>All The Great Zwallet Features</h1>
+                <h1 className={`${homepage.description} mt-5 fw-bold text-primary`}>All The Great On-Wallet Features</h1>
                 <div className={`${homepage.detailFeature} mt-3 ps-3 pt-2`}>
                   <div className='fs-4 text-primary fw-bold'>1. Small Fee</div>
-                  <div className='fs-6 text-primary mt-2'>We only charge 5% of every success transaction done in Zwallet app.</div>
+                  <div className='fs-6 text-primary mt-2'>We only charge 5% of every success transaction done in On-Wallet app.</div>
                 </div>
                 <div className={`${homepage.detailFeature} mt-3 ps-3 pt-2`}>
                   <div className='fs-4 text-primary fw-bold'>2. Data Secured</div>
@@ -122,67 +121,60 @@ export default function Home() {
           </div>      
         </Container>
       </section>
+      <section>
+        <Container>
+            <h1 className={`text-center mt-5 ${homepage.title} fw-bolder text-primary`}>What users are Saying </h1>
+            <div className={`mt-5 text-center fs-4 ${homepage.textHeader} text-primary`}>
+              We have some great features from the application and it’s totally free to use by all users around the world.
+            </div>
+            <div className="d-flex justify-content-center align-items-center mt-5">
+              <div className={`${homepage.arrow} me-3 text-center`}>
+                <AiOutlineArrowLeft/>
+              </div>
+              <div className={`${homepage.testimony} d-flex justify-content-center align-items-center text-center mb-5`}>
+                <div>
+                  <Image src="/images/profile-testimony.png" width={120} height={120} alt="image-profile"/>
+                  <div className='mt-3 fs-3 fw-bold text-primary'>Alex Hansinburg</div>
+                    <div className='mt-3 fs-3 text-primary'>Designer</div>
+                    <div className="fs-5 mt-5 px-5 text-primary">“This is the most outstanding app that I’ve ever try in my live, this app is such an amazing masterpiece and it’s suitable for you who is 
+                          bussy with their bussiness and must transfer money to another person aut there. Just try this app and see the power!”
+                    </div>
+                  </div>
+                </div>
+                <div  className={`${homepage.arrow} ms-3 text-center`}>
+                  <AiOutlineArrowLeft/>
+                </div>
+              </div>
+        </Container>
+      </section>
+      <footer className={homepage.footer}>
+        <Container>
+          <Row className='mb-5'>
+            <Col xs={3}>
+              <div className='mt-4'>
+                <h1>On-Wallet</h1>
+                  <div className='mt-4'>
+                    Simplify financial needs and saving much time in banking needs with one single app.
+                  </div>    
+              </div>  
+            </Col>
+          </Row>
+          <div>
+            <Row>
+              <Col md={3}>
+                <div>2020 On-Wallet. All right reserved.</div>
+              </Col>
+              <Col>
+                  <div className='text-end'>+62 5637 8882 9901</div>
+              </Col>
+              <Col xs={3}>
+                <div>contact@onwallet.com</div>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+        
+      </footer>
     </>
-    // <div className={styles.container}>
-    //   <Head>
-    //     <title>Create Next App</title>
-    //     <meta name="description" content="Generated by create next app" />
-    //     <link rel="icon" href="/favicon.ico" />
-    //   </Head>
-
-    //   <main className={styles.main}>
-    //     <h1 className={styles.title}>
-    //       Welcome to <a href="https://nextjs.org">Next.js!</a>
-    //     </h1>
-
-    //     <p className={styles.description}>
-    //       Get started by editing{' '}
-    //       <code className={styles.code}>pages/index.js</code>
-    //     </p>
-
-    //     <div className={styles.grid}>
-    //       <a href="https://nextjs.org/docs" className={styles.card}>
-    //         <h2>Documentation &rarr;</h2>
-    //         <p>Find in-depth information about Next.js features and API.</p>
-    //       </a>
-
-    //       <a href="https://nextjs.org/learn" className={styles.card}>
-    //         <h2>Learn &rarr;</h2>
-    //         <p>Learn about Next.js in an interactive course with quizzes!</p>
-    //       </a>
-
-    //       <a
-    //         href="https://github.com/vercel/next.js/tree/canary/examples"
-    //         className={styles.card}
-    //       >
-    //         <h2>Examples &rarr;</h2>
-    //         <p>Discover and deploy boilerplate example Next.js projects.</p>
-    //       </a>
-
-    //       <a
-    //         href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-    //         className={styles.card}
-    //       >
-    //         <h2>Deploy &rarr;</h2>
-    //         <p>
-    //           Instantly deploy your Next.js site to a public URL with Vercel.
-    //         </p>
-    //       </a>
-    //     </div>
-    //   </main>
-
-    //   <footer className={styles.footer}>
-    //     <a
-    //       href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Powered by{' '}
-    //       <span className={styles.logo}>
-    //         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-    //       </span>
-    //     </a>
-    //   </footer>
-    // </div>
   )
 }
