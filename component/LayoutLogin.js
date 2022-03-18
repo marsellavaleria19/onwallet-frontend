@@ -25,7 +25,7 @@ const LayoutLogin = (props) =>{
                         </div>
                     </div>  
                 </Col>
-                <Col>
+                <Col md={5}>
                     {props.children}
                 </Col>
             </Row>
