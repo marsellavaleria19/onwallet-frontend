@@ -13,6 +13,13 @@ export const loginProcess = (email, password) => {
 export const getDataUser = (token) => {
     return {
         type: 'LOGIN_PROFILE',
-        payload: AxiosCostum(token).get('/users')
+        payload: AxiosCostum(token).get('/profile')
+    }
+}
+
+export const getBalance = (token) => {
+    return {
+        type: 'BALANCE',
+        payload: AxiosCostum(token).get('/profile/balance')
     }
 }
