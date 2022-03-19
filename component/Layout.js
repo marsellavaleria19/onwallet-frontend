@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import { useSelector,useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { getDataUser,getBalance } from "../redux/actions/auth";
 
 const Layout = (props)=>{
 
@@ -25,21 +26,22 @@ const Layout = (props)=>{
               }
             }
           })
-        //   dispatch(getDataUser(token))
+        dispatch(getDataUser(token))
+        dispatch(getBalance(token))
         }
     },[dispatch,auth.token])
-
+    
     return(
         <div>
             {auth.token!==null &&
                 <>
                     <NavbarComponent/>
-                        <Container>
+                        <Container className="g-0 vh-80">
                             <Row className="mt-5">
-                                <Col md="4">
+                                <Col md="5" lg="4" xl="3">
                                     <Menu/>
                                 </Col>
-                                <Col md="8">
+                                <Col md="7" xl="9">
                                 {props.children}
                                 </Col>
                             </Row>

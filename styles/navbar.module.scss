@@ -2,12 +2,13 @@
 // @import './color.scss';
 
 $font-family:'Nunito Sans';
-$color : #6E3CBC;
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
 
 // @import 'bootstrap/scss/bootstrap';
 
 .navbarLight {
-    background-color: #7579E7;
+    background-color:$primary;
     height: 140px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -57,11 +58,11 @@ $color : #6E3CBC;
 
 .buttonRegister {
     background-color: #FFFFFF;
-    color:$color;
+    color:$primary;
 }
 
 .buttonLogin:hover,.buttonRegister:hover{
-    background-color: $color;
+    background-color: $primary;
     color: white;
     cursor: pointer;
     border : none;

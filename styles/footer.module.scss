@@ -1,3 +1,13 @@
+$font-family : 'Nunito Sans';
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
+$third : #98BAE7;
+
 .footer{
-    bottom : 0px;
+    bottom : 0;
+    background-color: $primary;
+    height: 68px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ const dataLogin = {
     token: null,
     message: null,
     user: null,
+    balance : null,
     isError: false,
     isLoading: false,
     isAuthenticated: false,
@@ -48,6 +49,34 @@ const auth = (state = dataLogin, action) => {
                 state.user = data.results
                 return {...state }
             }
+            case 'LOGIN_PROFILE_REJECTED':
+                {
+                    const { data } = action.payload.response
+                    state.isLoading = false
+                    state.isError = true
+                    state.errMessage = data.message
+                    return {...state }
+                }
+            case 'BALANCE_PENDING':
+                {
+                    state.isLoading = true
+                    return {...state }
+                }
+            case 'BALANCE_FULFILLED':
+                {
+                    const { data } = action.payload
+                    state.isLoading = false
+                    state.balance = data.results
+                    return {...state }
+                }
+            case 'BALANCE_REJECTED':
+                {
+                    const { data } = action.payload.response
+                    state.isLoading = false
+                    state.isError = true
+                    state.errMessage = data.message
+                    return {...state }
+                }
         case 'LOGOUT':
             {
                 state.token = null

@@ -160,7 +160,7 @@ export default function Home() {
             </Col>
           </Row>
           <div>
-            <Row>
+            {/* <Row>
               <Col md={3}>
                 <div>2020 On-Wallet. All right reserved.</div>
               </Col>
@@ -170,10 +170,9 @@ export default function Home() {
               <Col xs={3}>
                 <div>contact@onwallet.com</div>
               </Col>
-            </Row>
+            </Row> */}
           </div>
         </Container>
-        
       </footer>
     </>
   )

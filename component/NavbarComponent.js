@@ -1,18 +1,23 @@
 import { Navbar,Container } from "react-bootstrap";
-import variables from '../styles/navbar.module.scss'
+import navbar from '../styles/navbar.module.scss'
 import Image from 'next/image'
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const NavbarComponent = ()=>{
+  const auth = useSelector(state=>state.auth)
+  // const dispatch = useDispatch()
+
     return(
-        <Navbar className={variables.navbarLight} variant="dark">
+        <Navbar className={navbar.navbarLight} variant="dark">
         <Container>
-          <Navbar.Brand className={variables.navbarBrand} href="#home">GGWallet</Navbar.Brand>
+          <Navbar.Brand className={navbar.navbarBrand} href="#home">On-Wallet</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Image src='/images/image-profile.png' width={70} height={50} alt='profile' className="me-3 rounded-full"/>
+            <Image src={auth.user.picture === null ?'/images/profile.png' : auth.user.picture} width={70} height={50} alt='profile' className="me-3 img-fluid rounded"/>
             <Navbar.Text>
-              <div className={variables.textName}>Robert Chandler</div>
-              <div className={variables.textPhone}>+62 8139 3877 7946</div>
+              <div className={navbar.textName}>{auth.user.fullName}</div>
+              {/* <div className={variables.textPhone}>{auth.user.}</div> */}
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
