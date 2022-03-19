@@ -7,6 +7,7 @@ import Image from 'next/image';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Home = () =>{
+    
     return (
         <Layout>    
             <div className={variables.balance}>
