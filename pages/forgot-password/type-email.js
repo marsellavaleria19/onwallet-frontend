@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { emailProcess } from "../../redux/actions/forgotPassword";
 import { useSelector,useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const EmailFogotPassword = () =>{
@@ -17,6 +18,7 @@ const EmailFogotPassword = () =>{
     const [error,setError] = useState({})
     const dispatch = useDispatch()
     const [isSuccess,setIsSuccess] = useState(false)
+    const router = useRouter()
 
     useEffect(()=>{
         if(isSuccess){
