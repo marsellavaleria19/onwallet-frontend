@@ -14,9 +14,9 @@ const NavbarComponent = ()=>{
           <Navbar.Brand className={navbar.navbarBrand} href="#home">On-Wallet</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Image src={auth.user.picture === null ?'/images/profile.png' : auth.user.picture} width={70} height={50} alt='profile' className="me-3 img-fluid rounded"/>
+            <Image src={auth.user!==null ? (auth.user.picture == null ?'/images/profile.png' : auth.user.picture) : '/images/profile.png'} width={70} height={50} alt='profile' className="me-3 img-fluid rounded"/>
             <Navbar.Text>
-              <div className={navbar.textName}>{auth.user.fullName}</div>
+              <div className={navbar.textName}>{auth.user!==null && auth.user.fullName}</div>
               {/* <div className={variables.textPhone}>{auth.user.}</div> */}
             </Navbar.Text>
           </Navbar.Collapse>

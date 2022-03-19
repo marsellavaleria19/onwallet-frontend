@@ -18,7 +18,7 @@ const forgotPassword = (state=dataForgotPassword,action)=>{
             state.isLoading = false
             state.message = data.message
             state.isError = false
-            return {state}
+            return {...state}
         }
         case 'FORGOT_PASSWORD_REJECTED':{
             const {data} = action.payload.response

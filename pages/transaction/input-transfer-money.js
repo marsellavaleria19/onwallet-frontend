@@ -1,13 +1,13 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row } from "react-bootstrap";
 import {FaTrash} from "react-icons/fa";
-import Layout from "../component/Layout";
+import Layout from "../../component/Layout";
 import information from "../styles/information.module.scss";
 import variables from "../styles/transaction.module.scss";
 import input from "../styles/input.module.scss";
 import Image from 'next/image';
-import Input from "../component/Input";
-import CButton from "../component/CButton";
+import Input from "../../component/Input";
+import CButton from "../../component/CButton";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const InputTransfer= () =>{
