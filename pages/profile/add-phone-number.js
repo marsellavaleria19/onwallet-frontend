@@ -1,11 +1,11 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row,Form } from "react-bootstrap";
-import CButton from "../component/CButton";
-import Layout from "../component/Layout";
+import CButton from "../../component/CButton";
+import Layout from "../../component/Layout";
 import information from "../styles/information.module.scss";
 import variables from "../styles/input.module.scss";
 import Image from 'next/image';
-import Input from "../component/Input";
+import Input from "../../component/Input";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const ChangePassword= () =>{

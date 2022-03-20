@@ -53,6 +53,17 @@ $font-family : 'Nunito Sans';
     font-weight: 700;
 }
 
+.formPassword {
+    margin-top: 100px;
+}
+
+.buttonPassword {
+    height:57px;
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 100px;
+}
 
 .buttonTransaction {
     height:57px;
@@ -60,6 +71,7 @@ $font-family : 'Nunito Sans';
     border-radius: 12px;
     font-weight: 700;
 }
+
 .inputContainer {
     display: flex;
     width: 100%;
