@@ -1,13 +1,14 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row } from "react-bootstrap";
 import {FaTrash} from "react-icons/fa";
-import Layout from "../component/Layout";
+import Layout from "../../component/Layout";
 import information from "../styles/information.module.scss";
 import variables from "../styles/transaction.module.scss";
 import input from "../styles/input.module.scss";
 import Image from 'next/image';
-import Input from "../component/Input";
-import CButton from "../component/CButton";
+import Input from "../../component/Input";
+import CButton from "../../component/CButton";
+import { useSelector } from "react-redux";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const InputTransfer= () =>{
@@ -30,11 +31,11 @@ const InputTransfer= () =>{
                     </div>
                     <form className="text-center mt-5">
                             <div className="mb-5">
-                                <Input className={variables.textTransfer} type="number" value="0.00"/>
+                                Rp.<Input className={variables.textTransfer} type="number" value="100.000" disabled/>
                             </div>
                             <div className="fs-6 fw-bold mb-5">Rp120.000 Available</div>
                             <div className="mb-4">
-                                <Input className={input.text} type="text" placeholder="Add some notes"/>
+                                <Input className={input.text} type="text" placeholder="Add some notes" value="For buying some socks" disabled/>
                             </div>
                             <div className="text-end mb-4">
                                 <CButton>Continue</CButton>

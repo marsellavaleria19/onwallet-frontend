@@ -17,7 +17,7 @@ const Home = () =>{
                     <Col xs="5" > 
                         <div className="ms-5 mt-4">
                             <div className="fs-4 text-secondary mb-3">Balance</div>
-                            <div className="fs-1 fw-bold text-secondary">{auth.balance}</div>
+                            <div className="fs-1 fw-bold text-secondary">{auth.user!==null &&`Rp.${auth.balance!==null &&auth.balance.toLocaleString('id-ID')}`}</div>
                         </div>
                     </Col>
                         <Col className="text-end me-3 me-md-3 me-xl-5">

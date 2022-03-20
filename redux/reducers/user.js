@@ -1,29 +1,26 @@
-const dataRegister = {
-    data : null,
-    message : null,
-    isError : false,
-    isLoading : false,
-    errMessage : null
+const dataUser = {
+    message: null,
+    errMessage: null,
+    isLoading:false,
+    isError:false,
+    listUser: []
 }
 
-const registration = (state=dataRegister,action)=>{
+const user = (state=dataUser,action)=>{
     switch(action.type){
-        case 'DATA_REGISTRATION' : {
-            state.data = action.payload
-            return {...state}
-        }
-        case 'REGISTRATION_PENDING' : {
+        case 'USER_PENDING' : {
             state.isLoading = true
             return {...state}
         }
-        case 'REGISTRATION_FULFILLED' : {
+        case 'USER_FULFILLED' : {
             const{data} = action.payload
+            state.listUser = data.results
             state.isLoading = false
             state.message = data.message
             state.isError = false
             return {...state}
         }
-        case 'REGISTRATION_REJECTED':{
+        case 'USER_REJECTED':{
             const {data} = action.payload.response
             state.isLoading = false
             state.isError = true
@@ -35,4 +32,4 @@ const registration = (state=dataRegister,action)=>{
     }
 }
 
-export default registration
+export default user

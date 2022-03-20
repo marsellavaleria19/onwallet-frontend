@@ -84,7 +84,7 @@ const Login = () =>{
                             <div className="mt-5">
                                 <CButton type="submit" className={input.button}>Login</CButton>
                             </div>
-                            <div className="text-primary mt-3 text-center">Don&apos;t have an account? Let&apos;s <Link href="/register" className="fw-bold">Signup</Link></div>
+                            <div className="text-primary mt-3 text-center">Don&apos;t have an account? Let&apos;s <Link href="/register/form" className="fw-bold">Signup</Link></div>
                         </div>
                     </Form>
                 </div>   

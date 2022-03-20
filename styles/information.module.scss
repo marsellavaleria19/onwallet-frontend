@@ -1,12 +1,15 @@
-$primary: #7579E7;
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
 $font-family : 'Nunito Sans';
 
 .information{
-    background-color: $primary;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: $secondary;
+    border: 1px solid $primary;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
     border-radius: 25px;
     width: 100%;
-    height : 100%;
+    height : 870px;
+    overflow-y: auto;
 }
 
 .list{
@@ -15,4 +18,6 @@ $font-family : 'Nunito Sans';
     height : 110px;
     align-items: center;
     font-family: $font-family;
+    border:1px solid $primary;
+    cursor: pointer;
 }

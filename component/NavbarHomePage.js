@@ -12,7 +12,7 @@ const NavbarHomepage = ()=>{
           <Navbar.Toggle/>
           <Navbar.Collapse className="justify-content-end">
             <Link href="/login"><a className={`btn ${navbar.buttonLogin} me-3`}>Login</a></Link>
-            <Link href="/register"><a className={`btn ${navbar.buttonRegister} me-3`}>Register</a></Link>
+            <Link href="/register/form"><a className={`btn ${navbar.buttonRegister} me-3`}>Register</a></Link>
             {/* <Link href="/register"><a className={`btn ${navbar.buttonRegister}`}></a>Sign Up</Link> */}
           </Navbar.Collapse>
         </Container>

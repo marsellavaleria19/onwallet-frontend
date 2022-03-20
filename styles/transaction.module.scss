@@ -1,4 +1,7 @@
-// $primary: #7579E7;
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
+$font-family : 'Nunito Sans';
+
 // $font-family : 'Nunito Sains';
 
 .search{
@@ -12,13 +15,22 @@
     text-align: center;
     font-size: 42px;
     font-weight: 700;
+    margin-top: 100px;
+    color:$primary;
 }
 
 
 .textTransfer:focus {
     outline: none;
     box-shadow: unset;
+    background-color: transparent;
+    color:$primary;
 }
+
+.iconStatus{
+    font-size: 70px;
+}
+
 
 
 // .information{

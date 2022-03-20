@@ -8,17 +8,19 @@ import {HiPlus} from 'react-icons/hi'
 import {RiUser3Line} from 'react-icons/ri'
 import { useEffect,useState } from "react"
 import { useRouter } from "next/dist/client/router"
+import CModal from "./CModal"
+import Input from "./Input"
 
 const Menu = ()=>{
     const listMenu = [
         {menu:"Dashboard",link:"/",icon: IoGridOutline},
-        {menu:"Transfer",link:"/",icon: VscArrowUp},
-        {menu:"Topup",link:"/",icon: HiPlus},
+        {menu:"Transfer",link:"/transaction/receiver",icon: VscArrowUp},
+        {menu:"Topup",link:"/transaction/topup",icon: HiPlus},
         {menu:"Profile",link:"/",icon: RiUser3Line}]
     
     const [activeMenu,setActiveMenu] = useState("/")
     const router = useRouter()
-
+    
     useEffect(()=>{
         setActiveMenu(router.pathname)
     },[router.pathname])
