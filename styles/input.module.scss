@@ -1,27 +1,29 @@
+
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
 $font-family : 'Nunito Sans';
 
-$primary: #7579E7;
 
 .text {
     background-color:transparent;
-    color: white !important;
     border: none;
     width: 100%;
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+    border-bottom: 1.5px solid rgba(134, 35, 214, 0.6);
     height: 37px;
     font-size: 16px;
     font-family: $font-family;
 }
 
 .text::placeholder{
-    color:white
+    color:$primary
 }
 
 .text:focus {
     outline: none;
     background-color: transparent;
     box-shadow: unset;
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+    border-bottom: 1.5px solid rgba(134, 35, 214, 0.6);
+    color: $primary;
 }
 
 .textPin {
@@ -51,6 +53,13 @@ $primary: #7579E7;
     font-weight: 700;
 }
 
+
+.buttonTransaction {
+    height:57px;
+    width: 157px;
+    border-radius: 12px;
+    font-weight: 700;
+}
 .inputContainer {
     display: flex;
     width: 100%;
