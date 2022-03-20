@@ -44,7 +44,7 @@ const Profile= () =>{
                     <div className="text-center">
                         <div><CButton className={`${profile.button} btn-primary mb-3`}>Personal Information<AiOutlineArrowRight className={`${profile.icon} ms-auto`}/></CButton></div>
                         <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/change-password")}>Change Password</CButton></div>
-                        <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/change-pin")}>Change PIN</CButton></div>
+                        <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/verify-pin")}>Change PIN</CButton></div>
                         <div><CButton className={`${profile.button} btn-primary mb-3`}>Logout</CButton></div>
                     </div>
                 </Container>

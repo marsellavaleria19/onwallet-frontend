@@ -10,13 +10,16 @@ import Input from "../../component/Input";
 import  {BiLockAlt} from "react-icons/bi";
 import { validationPassword } from "../../helpers/validation";
 import { useState } from "react";
+import { useSelector,useDispatch } from "react-redux";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const ChangePassword= () =>{
-    
+    const {changePassword,auth} = useSelector(state=>state)
     const [error,setError] = useState({})
+    const dispatch = useDispatch()
 
     const handlePassword = (event)=>{
+        event.preventDefault()
         var data = {};
         data.currentPassword = event.target.elements["currentPassword"].value;
         data.newPassword = event.target.elements["newPassword"].value;
@@ -25,10 +28,12 @@ const ChangePassword= () =>{
         if(Object.keys(validate).length > 0){
             setError(validate)
         }else if(data.newPassword!==data.repeatPassword){
-            setError({matchPassword:"Password not match"})
+            setError({errMessage:"Password not match"})
         }else{
-            dispatch(changePasswordProcess(data))
-            router.push('/register/verify-pin')
+            dispatch(changePasswordProcess(data,auth.token))
+            if(changePassword.isError){
+                setError({errMessage:changePassword.errMessage})
+            }
         }
     }
     return (
@@ -39,10 +44,10 @@ const ChangePassword= () =>{
                     <p className="ms-4 text-primary">You must enter your current password and then type your new password twice.</p>
                         <Form className={`${input.formPassword} pe-5 ps-5`} onSubmit={handlePassword}>
                             {
-                                Object.keys(error).length>0 && error.matchPassword && <Alert variant="danger">
-                                {/* <Alert.Heading></Alert.Heading> */}
-                                <p>{error.matchPassword}</p>
-                              </Alert>
+                                Object.keys(error).length > 0 && <Alert variant="danger">
+                                    {/* <Alert.Heading></Alert.Heading> */}
+                                    <p>{error.errMessage}</p>
+                                  </Alert>
                             }
 
                             <div className={`${input.inputContainer} mt-5`}>

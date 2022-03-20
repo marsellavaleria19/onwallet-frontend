@@ -5,19 +5,25 @@ import Layout from "../../component/Layout";
 import information from "../../styles/information.module.scss";
 import PinInput from "react-pin-input"
 import { useState } from "react";
+import { changePindProcess } from "../../redux/actions/changePin";
+import { useDispatch, useSelector } from "react-redux";
+import { changePinProcess } from "../../redux/actions/changePassword";
+import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
-const ChangePin= () =>{
-    
+const VerifyPin= () =>{
+    const {auth,changePin} = useSelector(state=>state)
     const [pin,setPin] = useState(0)
     const [complete,setComplete] = useState(false)
     const [error,setError] = useState("")
-    
+    const dispatch = useDispatch()
+    const route  = useRouter()
+
     const handlePin = (event)=>{
         event.preventDefault()
-        dispatch(changePinProcess(null,pin,auth.token))
+        dispatch(changePinProcess(pin,null,auth.token))
         if(!changePin.isErrpr){
-            route.push("/profile")
+            route.push("/profile/change-pin")
         }
     }
 
@@ -26,7 +32,7 @@ const ChangePin= () =>{
             <div className={information.information}>
                 <Container className="pt-5">
                     <div className="fs-5 mb-3 ms-4 fw-bold text-primary">Change Pin</div>
-                    <p className="ms-4 text-primary">Type your new 6 digits security PIN to use in On-wallet..</p>
+                    <p className="ms-4 text-primary">Enter your current 6 digits On-wallet PIN below to continue to the next steps.</p>
                         <Form className="text-center mt-5" onSubmit={handlePin}>
                             <PinInput 
                                 length={6} 
@@ -45,9 +51,9 @@ const ChangePin= () =>{
                                 regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                                 />
                                 <div className="mt-5">
-                                    <CButton disabled={!complete}>Change Pin</CButton> 
+                                    <CButton disabled={!complete}>Continue</CButton>
                                 {/* {
-                                    !complete ? <CButton disabled>Change Pin</CButton> : <CButton type="submit">Change Pin</CButton>
+                                    !complete ? <CButton disabled>Change Pin</CButton> : <CButton type="submit">Continue</CButton>
                                 } */}
                             </div>
                         </Form>
@@ -57,4 +63,4 @@ const ChangePin= () =>{
     )
 }
 
-export default ChangePin
+export default VerifyPin
