@@ -16,7 +16,7 @@ const Profile= () =>{
                     <div className="mb-5 ms-3">
                         <div className="text-center mt-3">
                             <Image src="/images/2.png" width={80} height={80} className="mb-2"/>
-                            <div><CButton className="mb-3">Edtt</CButton></div>
+                            <div><CButton className="mb-3">Edit</CButton></div>
                             <div className="fs-4 mb-3">Jessica Keen</div>
                             <div className="fs-6">+62 811-3452-5252</div>
                         </div>

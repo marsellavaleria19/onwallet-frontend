@@ -16,7 +16,7 @@ const Menu = ()=>{
         {menu:"Dashboard",link:"/",icon: IoGridOutline},
         {menu:"Transfer",link:"/transaction/receiver",icon: VscArrowUp},
         {menu:"Topup",link:"/transaction/topup",icon: HiPlus},
-        {menu:"Profile",link:"/",icon: RiUser3Line}]
+        {menu:"Profile",link:"/profile",icon: RiUser3Line}]
     
     const [activeMenu,setActiveMenu] = useState("/")
     const router = useRouter()
