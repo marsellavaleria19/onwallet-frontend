@@ -16,11 +16,10 @@ import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Register = () =>{
-    const {registration} = useSelector(state=>state)
+    const {password} = useSelector(state=>state)
     const [error,setError] = useState({})
     const dispatch = useDispatch()
     const router = useRouter()
-    const [success,setSuccess] = useState()
     
     const validation = (data)=>{
         const newErrors = {}

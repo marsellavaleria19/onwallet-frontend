@@ -18,7 +18,7 @@ const CModal = ({show,functionShow,functionClose,children,title,functionSave}) =
             Save Changes
         </CButton>
         </Modal.Footer>
-</Modal>
+    </Modal>
     );
 }
 
