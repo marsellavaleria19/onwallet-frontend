@@ -20,15 +20,6 @@ const EmailFogotPassword = () =>{
     const [isSuccess,setIsSuccess] = useState(false)
     const router = useRouter()
 
-    useEffect(()=>{
-        if(isSuccess){
-            <Alert variant="success" onClose={() => setShow(false)} dismissible>
-            <Alert.Heading>Success</Alert.Heading>
-            <p>{forgotPassword.message}</p>
-          </Alert>
-        }
-    },[isSuccess])
-
 
     const validation = (email)=>{
         const newErrors = {}
@@ -58,6 +49,12 @@ const EmailFogotPassword = () =>{
                     <div className="fs-1 text-primary fw-bold">Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</div>
                     <div className="fs-5 text-primary mt-5">To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</div>
                         <div className="mt-5">
+                            {
+                                isSuccess && <Alert variant="success">
+                                    <Alert.Heading>Success</Alert.Heading>
+                                    <p>{forgotPassword.message}</p>
+                                </Alert>
+                            }
                             <div className={input.inputContainer}>
                                 <MdOutlineMailOutline/>
                                 <Input type="text" name="email" className={input.textLoginSignup} placeholder="Enter your e-mail"/>
