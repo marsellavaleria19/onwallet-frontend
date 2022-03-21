@@ -10,21 +10,15 @@ import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const verifyPin = ({registrationProcess}) =>{
-
     const {registration} = useSelector(state=>state)
     const [pin,setPin] = useState(0)
     const [error,setError] = useState(false)
     const router = useRouter()
     
     const handlePin = (event)=>{
-        if(Object.keys(validate).length > 0){
-            setError(validate)
-        }else if(data.newPassword!==data.repeatPassword){
-            setError({matchPassword:"Password not match"})
-        }else{
-            dispatch(changePasswordProcess(data))
-            router.push('/register/verify-pin')
-        }
+        event.preventDefault()
+        registrationProcess(registration.data,pin)
+        router.push('/register/success-verify')
     }
 
     return (

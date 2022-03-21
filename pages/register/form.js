@@ -63,7 +63,7 @@ const Register = () =>{
     return (
         <LayoutLogin>
             <div className="vh-100 overflow-auto">
-                <Form className="overflow-auto p-5 me-5 mt-5" onSubmit={handleRegistration}>
+                <Form className="overflow-auto p-5 mt-5 ms-3 me-3" onSubmit={handleRegistration}>
                     <div className="fs-1 text-primary fw-bold">Start Accessing Banking Needs
                         With All Devices and All Platforms With 30.000+ Users</div>
                         <div className="fs-5 text-primary mt-5">Transfering money is eassier than ever, 

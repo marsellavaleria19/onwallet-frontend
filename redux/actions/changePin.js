@@ -4,7 +4,7 @@ import AxiosCostum from '../../helpers/AxiosCostum'
 
 const {NEXT_PUBLIC_CALLBACK_URL} = process.env
 
-export const changePindProcess = (oldPin,newPin,token) => {
+export const changePinProcess = (oldPin,newPin,token) => {
     var data = {}
     if(oldPin!==null){
         data.oldPin = oldPin

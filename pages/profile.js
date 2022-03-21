@@ -14,7 +14,7 @@ import {AiOutlineArrowRight} from "react-icons/ai"
 import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
-const Profile= () =>{
+const PersonalInformation= () =>{
     const {auth,phone} = useSelector(state=>state)
     const dispatch = useDispatch()
     const route = useRouter()
@@ -42,7 +42,7 @@ const Profile= () =>{
                         </div>
                     </div>
                     <div className="text-center">
-                        <div><CButton className={`${profile.button} btn-primary mb-3`}>Personal Information<AiOutlineArrowRight className={`${profile.icon} ms-auto`}/></CButton></div>
+                        <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/personal-information")}>Personal Information</CButton></div>
                         <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/change-password")}>Change Password</CButton></div>
                         <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push("/profile/verify-pin")}>Change PIN</CButton></div>
                         <div><CButton className={`${profile.button} btn-primary mb-3`}>Logout</CButton></div>
@@ -53,4 +53,4 @@ const Profile= () =>{
     )
 }
 
-export default Profile
+export default PersonalInformation

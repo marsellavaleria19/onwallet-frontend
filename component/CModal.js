@@ -8,7 +8,7 @@ const CModal = ({show,functionShow,functionClose,children,title,functionSave}) =
     return (
         <Modal show={show} onHide={functionClose}  size="md"
         aria-labelledby="contained-modal-title-vcenter"
-        centered className={modal.modal}>
+        centered>
         <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
         </Modal.Header>

@@ -54,7 +54,7 @@ const EmailFogotPassword = () =>{
      <LayoutLogin>
         <Container>
             <div className="vh-100 overflow-auto">
-                <Form className="overflow-auto p-5 me-5 mt-5" onSubmit={handleConfirmEmail}>
+                <Form className="overflow-auto p-5 me-5 mt-5 ms-5" onSubmit={handleConfirmEmail}>
                     <div className="fs-1 text-primary fw-bold">Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</div>
                     <div className="fs-5 text-primary mt-5">To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</div>
                         <div className="mt-5">
@@ -62,6 +62,7 @@ const EmailFogotPassword = () =>{
                                 <MdOutlineMailOutline/>
                                 <Input type="text" name="email" className={input.textLoginSignup} placeholder="Enter your e-mail"/>
                             </div>
+                            {error!==null && error.email ? <div className={input.error}>{error.email}</div> : '' }
                             <div className="mt-5">
                                 <CButton type="submit" className={input.button}>Confirm</CButton>
                             </div>

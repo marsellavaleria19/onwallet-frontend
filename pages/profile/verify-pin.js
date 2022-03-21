@@ -5,9 +5,8 @@ import Layout from "../../component/Layout";
 import information from "../../styles/information.module.scss";
 import PinInput from "react-pin-input"
 import { useState } from "react";
-import { changePindProcess } from "../../redux/actions/changePin";
-import { useDispatch, useSelector } from "react-redux";
-import { changePinProcess } from "../../redux/actions/changePassword";
+import { changePinProcess } from "../../redux/actions/changePin";
+import { useDispatch, useSelector } from "react-redux";;
 import { useRouter } from "next/router";
 // import NavbarComponent from "../component/NavbarComponent";
 
@@ -24,6 +23,8 @@ const VerifyPin= () =>{
         dispatch(changePinProcess(pin,null,auth.token))
         if(!changePin.isErrpr){
             route.push("/profile/change-pin")
+        }else{
+            setError({errMessage:changePin.errMessage})
         }
     }
 
@@ -34,6 +35,11 @@ const VerifyPin= () =>{
                     <div className="fs-5 mb-3 ms-4 fw-bold text-primary">Change Pin</div>
                     <p className="ms-4 text-primary">Enter your current 6 digits On-wallet PIN below to continue to the next steps.</p>
                         <Form className="text-center mt-5" onSubmit={handlePin}>
+                            {
+                                 Object.keys(error).length > 0 && <Alert variant="danger">
+                                 <p>{error.errMessage}</p>
+                                </Alert>
+                            }
                             <PinInput 
                                 length={6} 
                                 initialValue=""
@@ -51,7 +57,7 @@ const VerifyPin= () =>{
                                 regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                                 />
                                 <div className="mt-5">
-                                    <CButton disabled={!complete}>Continue</CButton>
+                                    <CButton disabled={!complete} type="submit">Continue</CButton>
                                 {/* {
                                     !complete ? <CButton disabled>Change Pin</CButton> : <CButton type="submit">Continue</CButton>
                                 } */}

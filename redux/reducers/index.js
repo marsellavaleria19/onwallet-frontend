@@ -6,6 +6,7 @@ import user from "./user";
 import transaction from "./transaction";
 import phone from "./phone"
 import changePassword from "./changePassword";
+import changePin from "./changePin";
 
 const rootReducer = combineReducers({
     registration,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     user,
     transaction,
     phone,
-    changePassword
+    changePassword,
+    changePin
 })
 
 export default rootReducer
