@@ -23,3 +23,4 @@ export const getBalance = (token) => {
         payload: AxiosCostum(token).get('/profile/balance')
     }
 }
+

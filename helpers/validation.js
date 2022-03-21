@@ -28,13 +28,23 @@
     }
 
         
-    const validationForgotPassword = (data)=>{
+    export const validationForgotPassword = (data)=>{
         const newErrors = {}
+        var cek = false
         if(!data.newPassword || data.newPassword===''){
             newErrors.newPassword = 'Password must must be filled'
+            cek = true
         }
         if(!data.confirmPassword || data.confirmPassword===''){
-            newErrors.lastname = 'Confirm password must be filled'
+            newErrors.confirmPassword = 'Confirm password must be filled'
+            cek = true
         }
+
+        if(!cek){
+            if(data.newPassword !==data.confirmPassword){
+                newErrors.errMessage = "Password not match"
+            }
+        }
+
         return newErrors;
     }
