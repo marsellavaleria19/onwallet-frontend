@@ -24,3 +24,10 @@ export const getBalance = (token) => {
     }
 }
 
+
+export const getListPhoneProfile = (token) => {
+    return {
+        type: 'PHONE_AUTH',
+        payload: AxiosCostum(token).get('/profile/phones')
+    }
+}

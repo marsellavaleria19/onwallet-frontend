@@ -7,9 +7,8 @@ const dataLogin = {
     isLoading: false,
     isAuthenticated: false,
     isVerify: false,
-    isRegister: false,
-    isSubmitEmail: false,
-    errMessage: null
+    errMessage: null,
+    phone : null
 }
 
 const auth = (state = dataLogin, action) => {
@@ -70,6 +69,26 @@ const auth = (state = dataLogin, action) => {
                     return {...state }
                 }
             case 'BALANCE_REJECTED':
+                {
+                    const { data } = action.payload.response
+                    state.isLoading = false
+                    state.isError = true
+                    state.errMessage = data.message
+                    return {...state }
+                }
+            case 'PHONE_AUTH_PENDING':
+                {
+                    state.isLoading = true
+                    return {...state }
+                }
+            case 'PHONE_AUTH_FULFILLED':
+                {
+                    const { data } = action.payload
+                    state.phone = data.results.filter(item=>item.isPrimary==1).map((item)=>item.number)
+                    state.isLoading = false
+                    return {...state }
+                }
+            case 'PHONE_AUTH_REJECTED':
                 {
                     const { data } = action.payload.response
                     state.isLoading = false

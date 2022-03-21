@@ -33,9 +33,7 @@ $secondary: #9AB3F5 !default;
     margin-top: 52px;
 }
 
-
-.menuItem li.active{
-    color: $primary;
-    font-weight:700;
+.menuItem li a.active{
+    font-weight: 700;
     border-left: 2px solid $primary;
 }

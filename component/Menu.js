@@ -8,8 +8,6 @@ import {HiPlus} from 'react-icons/hi'
 import {RiUser3Line} from 'react-icons/ri'
 import { useEffect,useState } from "react"
 import { useRouter } from "next/dist/client/router"
-import CModal from "./CModal"
-import Input from "./Input"
 import CButton from "./CButton"
 import { useDispatch,useSelector } from "react-redux"
 
@@ -21,11 +19,12 @@ const Menu = ()=>{
         {menu:"Topup",link:"/transaction/topup",icon: HiPlus},
         {menu:"Profile",link:"/profile",icon: RiUser3Line},]
     
-    const [activeMenu,setActiveMenu] = useState("/")
+    const [activeMenu,setActiveMenu] = useState("/home")
     const router = useRouter()
     const dispatch = useDispatch()
     
     useEffect(()=>{
+        console.log(router.pathname)
         setActiveMenu(router.pathname)
     },[router.pathname])
 
@@ -42,7 +41,7 @@ const Menu = ()=>{
 
     return(
         <div className={`${menu.menu} mb-5`}>
-            <ul className={menu.menuItem}>
+            <ul className={`${menu.menuItem}`}>
                 {
                 listMenu.map(item => {
                     const Icon = item.icon
