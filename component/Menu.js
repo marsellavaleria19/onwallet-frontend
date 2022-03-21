@@ -10,20 +10,35 @@ import { useEffect,useState } from "react"
 import { useRouter } from "next/dist/client/router"
 import CModal from "./CModal"
 import Input from "./Input"
+import CButton from "./CButton"
+import { useDispatch,useSelector } from "react-redux"
 
 const Menu = ()=>{
+    const {auth} = useSelector(state=>state)
     const listMenu = [
-        {menu:"Dashboard",link:"/",icon: IoGridOutline},
+        {menu:"Dashboard",link:"/home",icon: IoGridOutline},
         {menu:"Transfer",link:"/transaction/receiver",icon: VscArrowUp},
         {menu:"Topup",link:"/transaction/topup",icon: HiPlus},
-        {menu:"Profile",link:"/profile",icon: RiUser3Line}]
+        {menu:"Profile",link:"/profile",icon: RiUser3Line},]
     
     const [activeMenu,setActiveMenu] = useState("/")
     const router = useRouter()
+    const dispatch = useDispatch()
     
     useEffect(()=>{
         setActiveMenu(router.pathname)
     },[router.pathname])
+
+    const handleLogout = (event)=>{
+        event.preventDefault()
+        dispatch({
+            type : 'LOGOUT'
+        })
+
+        if(auth.token==null){
+            router.push('/login')
+        }
+    }
 
     return(
         <div className={`${menu.menu} mb-5`}>
@@ -48,6 +63,9 @@ const Menu = ()=>{
                 <li><Link href="#"><a><RiUser3Line/>Profile</a></Link></li>
                 <li><Link href="#"><a>Logout</a></Link></li> */}
             </ul>
+            <div className="text-center">
+                <CButton onClick={handleLogout}>Logout</CButton>
+            </div>
         </div>
     
         // <Nav defaultActiveKey="/home" className={`${menu.menu} flex-column`}>

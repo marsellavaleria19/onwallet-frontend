@@ -26,3 +26,15 @@
         }
         return newErrors;
     }
+
+        
+    const validationForgotPassword = (data)=>{
+        const newErrors = {}
+        if(!data.newPassword || data.newPassword===''){
+            newErrors.newPassword = 'Password must must be filled'
+        }
+        if(!data.confirmPassword || data.confirmPassword===''){
+            newErrors.lastname = 'Confirm password must be filled'
+        }
+        return newErrors;
+    }

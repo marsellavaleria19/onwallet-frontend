@@ -34,7 +34,7 @@ $secondary: #9AB3F5 !default;
 }
 
 
-.menuItem li a.active{
+.menuItem li.active{
     color: $primary;
     font-weight:700;
     border-left: 2px solid $primary;

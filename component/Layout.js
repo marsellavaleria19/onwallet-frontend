@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { getDataUser,getBalance } from "../redux/actions/auth";
+import CModal from "./CModal";
 
 const Layout = (props)=>{
 
@@ -47,7 +48,9 @@ const Layout = (props)=>{
                             </Row>
                         </Container>
                     <Footer/>
-                </>
+                </> 
+                // :
+                // router.push("/login")
             }
             
         </div>

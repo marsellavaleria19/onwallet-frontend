@@ -22,6 +22,13 @@ export const getDataTransaction = (amount,notes,recipient) => {
     }
 }
 
+export const addTopup = (amount,token) => {
+    const data = {amount}
+     return {
+         type: 'TOPUP',
+         payload : AxiosCostum(token).post('/transactions/topup', qs.stringify(data))
+     }
+ }
 
 export const transactionProcess = (data,token) => {
     return {
