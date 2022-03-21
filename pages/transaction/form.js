@@ -66,9 +66,19 @@ const InputTransfer= () =>{
     return (  
         <Layout>          
             <div className={information.information}>
-                <Container className="pt-3">
+                <Container className="pt-5">
+                    <div className="ms-3 me-4">
                     <div className="fs-4 mb-5 fw-bold text-primary">Transfer Money</div>
-                    <Row className={`${information.list} m-3`}>
+                    <div className={`${information.list} mt-3 mb-3 ms-2 me-2 d-flex align-items-center`}>
+                        <div className="ms-3 me-4">
+                            <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
+                        </div>
+                        <div>   
+                            <div className="fs-5 text-primary fw-bold">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
+                            <div className="fs-6 text-primary mt-2">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
+                        </div>
+                    </div>
+                    {/* <Row className={`${information.list} m-3`}>
                         <Col xs={2}>
                             <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
                         </Col>
@@ -76,7 +86,7 @@ const InputTransfer= () =>{
                             <div className="fs-4 fw-bold text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
                             <div className="fs-6 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
                         </Col>
-                    </Row>
+                    </Row> */}
                     <div className="mt-5 mb-5 ms-3">
                         <p className="fs-6 text-primary">Type the amount you want to transfer and then press continue to the next steps.</p>
                     </div>
@@ -94,6 +104,8 @@ const InputTransfer= () =>{
                                 <CButton type="submit" className={input.buttonTransaction}>Continue</CButton>
                             </div>
                         </Form>
+                    </div>
+                    
                 </Container>
             </div>          
         </Layout>

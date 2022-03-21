@@ -1,6 +1,7 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row,Modal } from "react-bootstrap";
 import CButton from "../../component/CButton";
+import CList from "../../component/CList";
 import Layout from "../../component/Layout";
 import information from "../../styles/information.module.scss";
 import Image from 'next/image';
@@ -26,7 +27,7 @@ const ConfirmationTransaction= () =>{
         event.preventDefault()
         const data = {
             amount : transaction.dataTransaction.amount,
-            recipient : transaction.dataReceiver.id,
+            recipient : transaction.dataReceiver.user.id,
             pin : pin,
             notes : transaction.dataTransaction.notes
         }
@@ -37,58 +38,78 @@ const ConfirmationTransaction= () =>{
         <Layout>          
             <div className={information.information}>
                 <Container className="pt-3">
-                    <div className="fs-5 mb-3 mt-3 fw-bold text-primary">Transfer to</div>
-                    <Row className={`${information.list} mt-3 mb-3 ms-3 me-3`}>
-                        <Col xs={2}>
-                        <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
-                        </Col>
-                        <Col xs={5}>
-                            <div className="fs-4 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
-                            <div className="fs-6 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
-                        </Col>
-                    </Row>
-                    <div className="fs-5 mb-3 fw-bold text-primary">Details</div>
-                    <Row className={`${information.list} mb-3 ms-3 me-3`}>
-                        <div>
-                            <div className="fs-5 fw-bold text-primary">Amount</div>
-                            <div className="fs-4 text-primary">Rp.{transaction.dataTransaction!==null && transaction.dataTransaction.amount.toLocaleString("id-ID")}</div>
+                    <div className="ms-3 me-3">
+                        <div className="fs-5 mb-3 mt-3 fw-bold text-primary">Transfer to</div>
+                        <CList>
+                            <div className="ms-3 me-4">
+                                <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
+                            </div>
+                            <div>
+                                <div className="fs-4 text-primary fw-bold">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
+                                <div className="fs-6 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
+                            </div>
+                        </CList>
+                        {/* <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`}>
+                            <div className="ms-3 me-4">
+                                <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
+                            </div>
+                            <div>
+                                <div className="fs-4 text-primary fw-bold">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
+                                <div className="fs-6 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
+                            </div>
+                        </div> */}
+                        {/* <Row className={`${information.list} mt-3 mb-3 g-0`}>
+                            <Col xs={2}>
+                            <Image src={transaction.dataReceiver==null || transaction.dataReceiver.user===null || transaction.dataReceiver.user.picture==null || transaction.dataReceiver.user.picture=="undefined" ? "/images/profile.png" : transaction.dataReceiver.user.picture} width={50} height={50}/>
+                            </Col>
+                            <Col xs={10}>
+                                <div className="fs-4 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.user.fullName}</div>
+                                <div className="fs-6 text-primary">{transaction.dataReceiver!==null && transaction.dataReceiver.user!==null && transaction.dataReceiver.phone}</div>
+                            </Col>
+                        </Row> */}
+                        <div className="fs-5 mb-3 fw-bold text-primary">Details</div>
+                        <CList>
+                            <div className="ms-3">
+                                <div className="fs-5 fw-bold text-primary mb-2">Amount</div>
+                                <div className="fs-5 text-primary">Rp.{transaction.dataTransaction!==null && transaction.dataTransaction.amount.toLocaleString("id-ID")}</div>
+                            </div>
+                        </CList>
+                        <CList>
+                            <div className="ms-3">
+                                <div className="fs-5 fw-bold text-primary mb-2">Balance Left</div>
+                                <div className="fs-5 text-primary">Rp.{auth.balance!==null && transaction.dataTransaction!==null && transaction.dataTransaction.amount!==null && (auth.balance - parseFloat(transaction.dataTransaction.amount)).toLocaleString("id-ID")}</div>
+                            </div>
+                        </CList>
+                        <CList>
+                            <div className="ms-3">
+                                <div className="fs-5 fw-bold text-primary mb-2">Date&Time</div>
+                                <div className="fs-5 text-primary">{new Date().toDateString()}</div>
+                            </div>
+                        </CList>
+                        <CList>
+                            <div className="ms-3">
+                                <div className="fs-5 fw-bold text-primary mb-2">Notes</div>
+                                <div className="fs-5 text-primary">{transaction.dataTransaction!==null && transaction.dataTransaction.notes}</div>
+                            </div>
+                        </CList>
+                        <div className="text-end mb-3 mt-4">
+                            <CButton onClick={handleShow} className={`${inputStyle.buttonTransaction} btn-primary`}>Continue</CButton>
+                            <CModal show={show} functionShow={handleShow} functionClose={handleClose} functionSave={handleConfirmationTransaction} title="Enter PIN to Transfer">
+                                <p>Enter your 6 digits PIN for confirmation to continue transferring money.</p> 
+                                <PinInput 
+                                    length={6} 
+                                    initialValue=""
+                                    onChange={(value, index) => {}} 
+                                    type="numeric" 
+                                    inputMode="number"
+                                    onComplete={(value, index) => {
+                                        setPin(value)
+                                    }}
+                                    autoSelect={true}
+                                    regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                                    />
+                            </CModal>
                         </div>
-                    </Row>
-                    <Row className={`${information.list} mb-3 ms-3 me-3`}>
-                        <div>
-                            <div className="fs-5 fw-bold text-primary">Balance Left</div>
-                            <div className="fs-4 text-primary">Rp.{auth.balance!==null && transaction.dataTransaction!==null && transaction.dataTransaction.amount!==null && (auth.balance - parseFloat(transaction.dataTransaction.amount)).toLocaleString("id-ID")}</div>
-                        </div>
-                    </Row>
-                    <Row className={`${information.list} mb-3 ms-3 me-3`}>
-                        <div>
-                            <div className="fs-5 fw-bold text-primary">Date&Time</div>
-                            <div className="fs-4 text-primary">{new Date().toDateString()}</div>
-                        </div>
-                    </Row>
-                    <Row className={`${information.list} mb-5 ms-3 me-3`}>
-                        <div>
-                            <div className="fs-5 fw-bold text-primary">Notes</div>
-                            <div className="fs-4 text-primary">{transaction.dataTransaction!==null && transaction.dataTransaction.notes}</div>
-                        </div>
-                    </Row>
-                    <div className="text-end mb-3">
-                        <CButton onClick={handleShow} className={`${inputStyle.buttonTransaction} btn-primary`}>Continue</CButton>
-                        <CModal show={show} functionShow={handleShow} functionClose={handleClose} functionSave={handleConfirmationTransaction} title="Enter PIN to Transfer">
-                            <p>Enter your 6 digits PIN for confirmation to continue transferring money.</p> 
-                            <PinInput 
-                                length={6} 
-                                initialValue=""
-                                onChange={(value, index) => {}} 
-                                type="numeric" 
-                                inputMode="number"
-                                onComplete={(value, index) => {
-                                    setPin(value)
-                                }}
-                                autoSelect={true}
-                                regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-                                />
-                        </CModal>
                     </div>
                 </Container>
             </div>          
