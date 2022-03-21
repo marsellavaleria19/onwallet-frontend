@@ -41,7 +41,8 @@ const Receiver = () => {
     return (
         <Layout>          
             <div className={information.information}>
-                <Container className="pt-3">
+                <Container className="pt-4">
+                    <div className="ms-3 me-3">
                     <div className="fs-4 mb-3 fw-bold text-primary">Search Receiver</div>
                     <Input type="text" placeholder="Search" className={variables.search}/>   
                     {
@@ -51,7 +52,7 @@ const Receiver = () => {
                                     {
                                         item.phone.length > 0 ?
                                         item.phone.map((itemPhone)=>{
-                                            return(<Row className={`${information.list} mt-3 mb-3 ms-3 me-3`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
+                                            return(<Row className={`${information.list} mt-3 mb-3`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
                                                 <Col xs={2}>
                                                     <Image src={item.picture===null ? "/images/profile.png" : item.picture} width={50} height={50}/>
                                                 </Col>
@@ -62,7 +63,7 @@ const Receiver = () => {
                                             </Row>) 
                                         }) 
                                         :
-                                          <Row className={`${information.list} mt-3 mb-3 ms-3 me-3`} key={item.id} onClick={()=>handleReceiver(item)}>
+                                          <Row className={`${information.list} mt-3 mb-3`} key={item.id} onClick={()=>handleReceiver(item)}>
                                           <Col xs={2}>
                                                 <Image src={item.picture===null || item.picture=="undefined" ? "/images/profile.png" : item.picture} width={50} height={50}/>
                                             </Col>
@@ -76,6 +77,8 @@ const Receiver = () => {
                             )
                         })
                     }
+                </div>
+                   
                     
                     
                     {/* <Row className={`${information.list} mt-3 mb-3 ms-3`}>
