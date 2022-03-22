@@ -1,32 +1,32 @@
-const dataChangePassword = {
+const dataHistory = {
     data : null,
     message : null,
     isError : false,
     isLoading : false,
     errMessage : null,
-    isShowError : false
+    listHistory : []
 }
 
-const changePassword = (state=dataChangePassword,action)=>{
+const history = (state=dataHistory,action)=>{
     
     switch(action.type){
-        case 'CHANGE_PASSWORD_PENDING' : {
+        case 'HISTORY_PENDING' : {
             state.isLoading = true
             return {...state}
         }
-        case 'CHANGE_PASSWORD_FULFILLED' : {
+        case 'HISTORY_FULFILLED' : {
             const{data} = action.payload
             state.isLoading = false
             state.message = data.message
+            state.listHistory = data.results
             state.isError = false
             return {...state}
         }
-        case 'CHANGE_PASSWORD_REJECTED':{
+        case 'HISTORY_REJECTED':{
             const {data} = action.payload.response
             state.isLoading = false
             state.isError = true
             state.errMessage = data.message
-            state.isShowError = true
         }
         default : {
             return {...state}
@@ -34,4 +34,4 @@ const changePassword = (state=dataChangePassword,action)=>{
     }
 }
 
-export default changePassword
+export default history

@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { getDataUser,getBalance,getListPhoneProfile } from "../redux/actions/auth";
+import { getListHistory } from "../redux/actions/history";
 import CModal from "./CModal";
 
 const Layout = (props)=>{
@@ -30,6 +31,7 @@ const Layout = (props)=>{
         dispatch(getDataUser(token))
         dispatch(getBalance(token))
         dispatch(getListPhoneProfile(token))
+        dispatch(getListHistory(auth.token))
         }
     },[dispatch,auth.token])
     

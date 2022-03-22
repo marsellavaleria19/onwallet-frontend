@@ -19,14 +19,17 @@ const ChangePassword= () =>{
     const dispatch = useDispatch()
     const [success,setSuccess] = useState(false)
 
-    // useEffect(()=>{
+    useEffect(()=>{
+        if(changePassword.isError){
+            setError({errMessage:changePassword.errMessage})
+        }
+     },[changePassword.isError])
+
+    //  useEffect(()=>{
     //     if(success){
-    //         <Alert variant="success">
-    //             <p>{changePassword.message}</p>
-    //         </Alert>
+    //         setSuccess(true)
     //     }
     //  },[success])
-
 
     const handlePassword = (event)=>{
         event.preventDefault()
@@ -41,11 +44,15 @@ const ChangePassword= () =>{
             setError({errMessage:"Password not match"})
         }else{
             dispatch(changePasswordProcess(data,auth.token))
-            if(changePassword.isError){
-                setError({errMessage:changePassword.errMessage})
-            }else{
-               setSuccess(true)
-            }
+            setSuccess(true)
+            setError({})
+            // if(changePassword.isError){
+            //     console.log("masuk!!")
+            //     setError({errMessage:changePassword.errMessage})
+            // }else{
+            //    setSuccess(true)
+            //    setError({})
+            // }
         }
     }
     return (
