@@ -22,7 +22,7 @@ const Receiver= () =>{
                     <div className="fs-5 mb-3 ms-3 me-3 fw-bold text-primary">Manage Phone Number</div>
                     <p className="ms-3 me-3 text-primary">You can only delete the phone number and then you must add another phone number.</p>
                     {phone !==null && phone.listPhone && phone.listPhone.map((item)=>{
-                        return(<Row className={`${information.list} mt-5 mb-3 ms-3 me-3`}>
+                        return(<Row className={`${information.list} mt-5 mb-3 ms-3 me-3`} key={item.id}>
                          <Col xs={6} className="text-start">
                             {
                                 item.isPrimary && <div className="fs-5 text-primary">Primary</div>
