@@ -15,7 +15,7 @@ const phone = (state=dataPhone,action)=>{
         }
         case 'PHONE_FULFILLED' : {
             const{data} = action.payload
-            state.listPhone = data.results.filter(item=>item.isPrimary==1)
+            state.listPhone = data.results
             state.isLoading = false
             state.message = data.message
             state.isError = false

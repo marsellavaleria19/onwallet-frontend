@@ -48,3 +48,14 @@
 
         return newErrors;
     }
+
+    export const validationPhoneNumber = (phoneNumber)=>{
+        const newErrors = {}
+        if(!phoneNumber || phoneNumber===''){
+            newErrors.phoneNumber = 'phone number must be filled'
+        }else if(isNaN(parseInt(phoneNumber))){
+            newErrors.phoneNumber = 'phone number must be a number'
+        }
+
+        return newErrors;
+    }
