@@ -21,6 +21,20 @@ const Login = () =>{
     const [error,setError] = useState({})
     const router = useRouter()
 
+    useEffect(()=>{
+        if(window.localStorage.getItem("token")){
+            router.push('/home')
+        }
+    },[])
+
+    useEffect(()=>{
+        if(auth.token){
+            router.push('/home')
+        }
+    },[auth])
+
+  
+
     const validation = (data)=>{
         const newErrors = {}
         if(!data.email || data.email===''){
@@ -46,9 +60,6 @@ const Login = () =>{
         }
         else{
             dispatch(loginProcess(email,password))           
-            if(!auth.isError){
-                router.push('/home')
-            }
         }
          
     }
