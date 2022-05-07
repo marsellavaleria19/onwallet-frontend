@@ -10,6 +10,7 @@ const registration = (state=dataRegister,action)=>{
     switch(action.type){
         case 'DATA_REGISTRATION' : {
             state.data = action.payload
+            state.message = 'Registration Successfully.'
             return {...state}
         }
         case 'REGISTRATION_PENDING' : {
