@@ -37,7 +37,7 @@ const Layout = (props)=>{
     
     return(
         <div>
-            {auth.token!==null &&
+            {auth.token!==null ?
                 <>
                     <NavbarComponent/>
                         <Container className="g-0 vh-80">
@@ -52,8 +52,8 @@ const Layout = (props)=>{
                         </Container>
                     <Footer/>
                 </> 
-                // :
-                // router.push("/login")
+                :
+                router.push("/login")
             }
             
         </div>
