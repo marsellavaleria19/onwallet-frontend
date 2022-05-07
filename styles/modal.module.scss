@@ -2,6 +2,18 @@ $primary: #6E3CBC !default;
 $secondary: #9AB3F5 !default;
 $font-family : 'Nunito Sans';
 
-.modal{
-    background-color: $secondary;
+.modalHeader{
+    background-color: $primary;
+    color: white;
+}
+
+.modalBody{
+   background-color: $secondary;
+   color: $primary;
+}
+
+.modalIcon{
+   background-color: $secondary;
+   color: $primary;
+   font-size: 100px;
 }
