@@ -1,30 +1,61 @@
 // import { Button } from "bootstrap";
+import React,{useEffect, useState} from "react";
 import CButton from "../../component/CButton";
 import input from "../../styles/input.module.scss";
 import LayoutLogin from "../../component/LayoutLogin";
 import PinInput from "react-pin-input"
-import { useEffect, useState } from "react";
 import { registrationProcess } from "../../redux/actions/registration";
-import { connect, useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import { useRouter } from "next/router";
+import CModalError from "../../component/CModalError";
+import CModalLoading from "../../component/CModalLoading";
+import { ScatterController } from "chart.js";
 // import NavbarComponent from "../component/NavbarComponent";
 
-const verifyPin = ({registrationProcess}) =>{
-    const {registration} = useSelector(state=>state)
-    const [pin,setPin] = useState(0)
+const VerifyPin = () =>{
+   const {registration} = useSelector(state=>state)
+    const [pin,setPin] = useState(null)
     const [error,setError] = useState(false)
     const router = useRouter()
-    
+    var [messageError,setMessageError] = useState('');
+    const handleCloseError = () => setShowModalError(false);
+    const [showModalError,setShowModalError] = useState(false);
+    const [showModalLoading,setShowModalLoading] = useState(false);
+    const handleCloseLoading = () => setShowModalLoading(false);
+   const[control,setControl] = useState(false);
+
+   useEffect(()=>{
+      setShowModalLoading(registration.isLoading);
+      if(registration.isLoading==false && control==true){
+         if(registration.isError){
+            messageError = auth.errMessage;
+            setMessageError(messageError);
+            setShowModalError(true);
+         }
+         setControl(false);
+      }
+   },[registration.isLoading]);
+
     const handlePin = (event)=>{
         event.preventDefault()
-        registrationProcess(registration.data,pin)
-        router.push('/register/success-verify')
+        if(pin!==null){
+         registrationProcess(registration.data,pin)
+         router.push('/register/success-verify')
+         setControl(true);
+        }else{
+         setMessageError('Pin must be filled.')
+         setShowModalError(true)
+        }
     }
 
     return (
         <LayoutLogin>
             <div className="vh-100 overflow-auto">
                 <form onSubmit={handlePin} className="overflow-auto p-5 me-5 mt-5">
+                  <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
+                     {
+                        messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
+                     }
                     <div className="fs-1 text-primary fw-bold">Secure Your Account, Your Wallet,
                         and Your Data With 6 Digits PIN That You Created Yourself.</div>
                         <div className="fs-5 text-primary mt-5">Create 6 digits pin to secure all your money and your data in On-wallet app. 
@@ -33,6 +64,7 @@ const verifyPin = ({registrationProcess}) =>{
                             <PinInput 
                             length={6} 
                             initialValue=""
+                            secret
                             onChange={(value, index) => {}} 
                             type="numeric" 
                             inputMode="number"
@@ -42,7 +74,6 @@ const verifyPin = ({registrationProcess}) =>{
                             autoSelect={true}
                             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                             />
-                            {error && <p>Pin harus diisi</p>}
                         </div>
                         <div className="mt-5">
                             <CButton type="submit" className={input.button}>Confirm</CButton>
@@ -53,6 +84,4 @@ const verifyPin = ({registrationProcess}) =>{
     )
 }
 
-const mapStateToProps = state => ({registration:state.registration})
-const mapDispatchToProps = {registrationProcess}
-export default connect(mapStateToProps,mapDispatchToProps)(verifyPin)
+export default VerifyPin
