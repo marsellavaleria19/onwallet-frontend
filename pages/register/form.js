@@ -13,13 +13,25 @@ import { getDataRegistration } from "../../redux/actions/registration";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useRouter } from "next/router";
+import CModalSuccess from "../../component/CModalSuccess";
+import CModalError from "../../component/CModalError";
+import CModalLoading from "../../component/CModalLoading";
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Register = () =>{
-    const {password} = useSelector(state=>state)
+    const {password,registration} = useSelector(state=>state)
     const [error,setError] = useState({})
     const dispatch = useDispatch()
     const router = useRouter()
+    const [showModalError,setShowModalError] = useState(false);
+    const [showModalSuccess,setShowModalSuccess] = useState(false);
+    const [showModalLoading,setShowModalLoading] = useState(false);
+    const handleCloseLoading = () => setShowModalLoading(false);
+    const handleCloseError = () => setShowModalError(false);
+    const handleCloseSuccess = () => setShowModalSuccess(false);
+    var [messageError,setMessageError] = useState('');
+    var [messageSuccess,setMessageSuccess] = useState('');
+    const [control,setControl] = useState(false)
     
     const validation = (data)=>{
         const newErrors = {}
@@ -37,9 +49,8 @@ const Register = () =>{
         }
         return newErrors;
     }
-
+   
     const handleRegistration = (event)=>{
-        console.log("masuk!!")
         event.preventDefault()
         var data = {};
         data.firstname = event.target.elements["firstname"].value;
@@ -51,19 +62,25 @@ const Register = () =>{
             setError(validate)
         }else{
             dispatch(getDataRegistration(data))
-            router.push('/register/verify-pin')
+            setMessageSuccess(registration.message);
+            setShowModalSuccess(true);
         }
-    //   const form = event.currentTarget;
-    //   if(form.checkValidity()===false){
-    //       event.preventDefault()
-    //   }
-    //   setValidated(true)
+    }
+
+    const goToVerifyPin = ()=>{
+      router.push('/register/verify-pin')
     }
 
     return (
         <LayoutLogin>
             <div className="vh-100 overflow-auto">
                 <Form className="overflow-auto p-5 mt-5 ms-3 me-3" onSubmit={handleRegistration}>
+                  {
+                     messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
+                  }
+                  {
+                     messageSuccess!=='' && <CModalSuccess message={messageSuccess} show={showModalSuccess} close={handleCloseSuccess} button="Verify pin" functionHandle={goToVerifyPin}/>
+                  }
                     <div className="fs-1 text-primary fw-bold">Start Accessing Banking Needs
                         With All Devices and All Platforms With 30.000+ Users</div>
                         <div className="fs-5 text-primary mt-5">Transfering money is eassier than ever, 
