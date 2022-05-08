@@ -1,8 +1,8 @@
-import { Button as BsButton} from "react-bootstrap";
+import { Button as BsButton} from 'react-bootstrap';
 
 const CButton = ({children,...rest})=>{
-    return(
-    <BsButton {...rest}>{children}</BsButton>)
-}
+   return(
+      <BsButton {...rest}>{children}</BsButton>);
+};
 
-export default CButton
+export default CButton;
