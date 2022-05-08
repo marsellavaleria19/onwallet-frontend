@@ -18,6 +18,7 @@ import {addTopup } from '../../redux/actions/transaction';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
 import CModalSuccess from '../../component/CModalSuccess';
+import { validation } from '../../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Topup= () =>{
@@ -51,21 +52,24 @@ const Topup= () =>{
       }
    },[transaction.isLoading]);
 
-   const validation = (amount)=>{
-      const newErrors = {};
-      if(!amount || amount===''){
-         newErrors.amount = 'Amount must be filled';
-      }else if(amount<10000){
-         newErrors.amount = 'Amount must be grather than 10000';
-      }
-
-      return newErrors;
-   };
-
    const handleTopup = (event)=>{
       event.preventDefault();
       var amount =  event.target.elements['amount'].value;
-      var validate = validation(amount);
+      const data = {
+         amount : amount
+      };
+
+      const requirement = {
+         amount : 'required|number'
+      };
+
+      var validate = validation(data,requirement);
+      if(Object.keys(validate).length == 0){
+         if(amount<=10000){
+            validate.amount = 'amount must be grather than 10000';
+         }
+      }
+      
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
