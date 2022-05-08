@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import CModalLoading from '../component/CModalLoading';
 import CModalError from '../component/CModalError';
 import CModalSuccess from '../component/CModalSuccess';
+import { validation } from '../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Login = () =>{
@@ -68,25 +69,18 @@ const Login = () =>{
    },[showModalSuccess,showModalError]);
   
 
-   const validation = (data)=>{
-      const newErrors = {};
-      if(!data.email || data.email===''){
-         newErrors.email = 'Email must be filled';
-      }
-
-      if(!data.password || data.password===''){
-         newErrors.password = 'Password must be filled';
-      }
-      return newErrors;
-   };
-
    const loginHandle = (event)=>{
       console.log('masuk!!');
       event.preventDefault();
       var email = event.target.elements['email'].value;
       var password =  event.target.elements['password'].value;
-      var data = {email,password};
-      var validate = validation(data);
+      const data = {email,password};
+      const requirement = {
+         email : 'required|email',
+         password : 'required'
+      };
+      
+      var validate = validation(data,requirement);
 
       if(Object.keys(validate).length > 0){
          setError(validate);
