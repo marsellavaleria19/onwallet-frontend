@@ -1,52 +1,71 @@
+import validator from 'validator';
 
-export const validationPassword = (data)=>{
-   const newErrors = {};
-   if(!data.currentPassword || data.currentPassword===''){
-      newErrors.currentPassword = 'Current password must be filled';
+export const validation = (data,requirement) =>{
+   var result = {};
+   var validate = null;
+   for(var key in data){
+      if(requirement[key]){
+         if (requirement[key].toString().includes('|')) {
+            var split = requirement[key].split('|');
+            for (let index = 0; index < split.length; index++) {
+               validate = validateRequirement(split[index],data[key],key);
+               result = {...result,...validate};  
+            }
+         }else{
+            validate = validateRequirement(requirement[key],data[key],key); 
+            result = {...result,...validate};
+         }
+      }
    }
-   if(!data.newPassword || data.newPassword===''){
-      newErrors.newPassword = 'New password must be filled';
-   }
-   if(!data.repeatPassword || data.repeatPassword===''){
-      newErrors.repeatPassword = 'Repeat new password must be filled';
-   }
-   return newErrors;
+      
+   return result;
 };
 
-export const validationUser = (data)=>{
-   const newErrors = {};
-   if(!data.currentPassword || data.currentPassword===''){
-      newErrors.currentPassword = 'Current password must be filled';
+const validateRequirement = (type,data,key)=>{
+   var result = {};
+   if (type == 'required') {
+      if (validator.isEmpty(data)) {
+         result[key] = `${key} must be filled`;
+      }
    }
-   if(!data.newPassword || data.newPassword===''){
-      newErrors.newPassword = 'New password must be filled';
+   if (type == 'choose') {
+      if (validator.isEmpty(data)) {
+         result[key] = `${key} must be choose`;
+      }
    }
-   if(!data.repeatPassword || data.repeatPassword===''){
-      newErrors.repeatPassword = 'Repeat new password must be filled';
+   if(!validator.isEmpty(data)){
+      if (type == 'number') {
+         if (!validator.isNumeric(data)) {
+            result[key] = `${key} must be a number`;
+         }
+      }
+      if (type == 'date') {
+         if (!validator.isDate(data)) {
+            result[key] = `${key} must be a format date`;
+         }
+      }
+      if(type=='phone'){
+         if(!validator.isMobilePhone(data)){
+            result[key] = `${key} must be a phone number's format`;
+         }
+      }
+      if(type=='email'){
+         if(!validator.isEmail(data)){
+            result[key] = `${key} must be a email's format`;
+         }
+      }
+      if(type=='grather0'){
+         if(validator.isNumeric(data)){
+            if(parseInt(data)<=0){
+               result[key] = `${key} must be a grather than 0`;
+            }
+         }
+      }
+      if(type=='image'){
+         if(validator.isMimeType(data)){
+            result[key] = `${key} must be a grather than 0`;
+         }
+      }
    }
-   return newErrors;
-};
-
-        
-export const validationForgotPassword = (data)=>{
-   const newErrors = {};
-   if(!data.newPassword || data.newPassword===''){
-      newErrors.newPassword = 'Password must must be filled';
-   }
-   if(!data.confirmPassword || data.confirmPassword===''){
-      newErrors.confirmPassword = 'Confirm password must be filled';
-   }
-
-   return newErrors;
-};
-
-export const validationPhoneNumber = (phoneNumber)=>{
-   const newErrors = {};
-   if(!phoneNumber || phoneNumber===''){
-      newErrors.phoneNumber = 'phone number must be filled';
-   }else if(isNaN(parseInt(phoneNumber))){
-      newErrors.phoneNumber = 'phone number must be a number';
-   }
-
-   return newErrors;
+   return result;
 };

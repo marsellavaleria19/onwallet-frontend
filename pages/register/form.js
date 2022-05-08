@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import CModalSuccess from '../../component/CModalSuccess';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
+import { validation } from '../../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Register = () =>{
@@ -33,22 +34,22 @@ const Register = () =>{
    var [messageSuccess,setMessageSuccess] = useState('');
    const [control,setControl] = useState(false);
     
-   const validation = (data)=>{
-      const newErrors = {};
-      if(!data.firstname || data.firstname===''){
-         newErrors.firstname = 'Firstname must be filled';
-      }
-      if(!data.lastname || data.lastname===''){
-         newErrors.lastname = 'Lastname must be filled';
-      }
-      if(!data.email || data.firstnam===''){
-         newErrors.email = 'Email must be filled';
-      }
-      if(!data.password || data.password===''){
-         newErrors.password = 'Password must be filled';
-      }
-      return newErrors;
-   };
+   // const validation = (data)=>{
+   //    const newErrors = {};
+   //    if(!data.firstname || data.firstname===''){
+   //       newErrors.firstname = 'Firstname must be filled';
+   //    }
+   //    if(!data.lastname || data.lastname===''){
+   //       newErrors.lastname = 'Lastname must be filled';
+   //    }
+   //    if(!data.email || data.firstnam===''){
+   //       newErrors.email = 'Email must be filled';
+   //    }
+   //    if(!data.password || data.password===''){
+   //       newErrors.password = 'Password must be filled';
+   //    }
+   //    return newErrors;
+   // };
    
    const handleRegistration = (event)=>{
       event.preventDefault();
@@ -57,7 +58,14 @@ const Register = () =>{
       data.lastname = event.target.elements['lastname'].value;
       data.email = event.target.elements['email'].value;
       data.password = event.target.elements['password'].value;
-      var validate = validation(data);
+      const requirement = {
+         firstname:'required',
+         lastname : 'required',
+         email : 'required|email',
+         password : 'required'
+      };
+
+      var validate = validation(data,requirement);
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
