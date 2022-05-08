@@ -1,6 +1,25 @@
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
+
 .button{
     height : 64px;
     width : 433px;
+    border-radius: 20px;
+    color:$secondary;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.buttonEdit{
+   background-color: transparent;
+   border:none;
+   color: $primary;
+}
+
+.icon{
+    font-size: 20px;
 }
 
 @media(max-width:500px) {

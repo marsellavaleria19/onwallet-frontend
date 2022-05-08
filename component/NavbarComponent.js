@@ -1,23 +1,43 @@
-import { Navbar,Container } from "react-bootstrap";
-import variables from '../styles/navbar.module.scss'
-import Image from 'next/image'
+import { Navbar,Container,Nav } from 'react-bootstrap';
+import navbar from '../styles/navbar.module.scss';
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import {FaBell} from 'react-icons/fa';
 
 const NavbarComponent = ()=>{
-    return(
-        <Navbar className={variables.navbarLight} variant="dark">
-        <Container>
-          <Navbar.Brand className={variables.navbarBrand} href="#home">GGWallet</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Image src='/images/image-profile.png' width={70} height={50} alt='profile' className="me-3 rounded-full"/>
-            <Navbar.Text>
-              <div className={variables.textName}>Robert Chandler</div>
-              <div className={variables.textPhone}>+62 8139 3877 7946</div>
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    )
-}
+   const {auth} = useSelector(state=>state);
+   // const dispatch = useDispatch()
 
-export default NavbarComponent
+   return(
+      <Navbar collapseOnSelect expand="lg" className={navbar.navbarLight} variant="dark">
+         <Container>
+            <Navbar.Brand className={navbar.navbarBrand} href="/home">On-Wallet</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+               <Nav className="ms-auto">
+                  <Nav.Link href="#deets">
+                     <div className="d-flex justify-content-end">
+                        {auth.user!==null && <Image src={auth.user.picture == null ?'/images/profile.png' : auth.user.picture} width={52} height={52} alt='profile' layout="intrinsic" className="img-fluid rounded"/>}
+                        <div>
+                           <div className={`${navbar.textName} fw-bold ms-3`}>{auth.user!==null && auth.user.fullName}</div>
+                           <div className="fs-6 ms-3">
+                              {
+                                 auth.user!==null && (auth.phone.length>0 ? auth.phone :'-')
+                              }
+                           </div>
+                        </div>
+                     </div>
+                  </Nav.Link>
+                  <Nav.Link>
+                     <div className="align-items-center fs-3 ms-3">
+                        <FaBell/> 
+                     </div> 
+                  </Nav.Link>
+               </Nav>
+            </Navbar.Collapse>
+         </Container>
+      </Navbar>
+   );
+};
+
+export default NavbarComponent;

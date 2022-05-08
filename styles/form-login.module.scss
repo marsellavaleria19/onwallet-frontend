@@ -1,0 +1,18 @@
+$font-family : 'Nunito Sans';
+
+.background{
+    background-image: url(../public/images/background-login.png);
+    background-repeat:no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+.footer{
+    bottom: 0px;
+}
+
+@media(max-width:755px) {
+    .background {
+        display: none;
+    }
+}
