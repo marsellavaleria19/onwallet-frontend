@@ -94,13 +94,7 @@ const PersonalInformation= () =>{
                      <input id="fileUpload" type="file" name="picture" hidden onChange={selectedFile}/>   
                      <div><CButton className={profile.buttonEdit} onClick={chooseFiles}><FaPencilAlt className="me-2"/>Edit</CButton></div>
                      <div className="fs-4 mb-2 mt-5 text-primary fw-bold">{auth.user!==null && auth.user.fullName}</div>
-                     {
-                        auth.user!==null && phone.listPhone.map((item)=>{
-                           return(
-                              <div className="fs-5 text-primary" key={item.id}>{item.number}</div>
-                           );
-                        })
-                     }                            
+                     {auth.phone.length > 0 ? <div className="fs-5 text-primary">{auth.phone[0]}</div> :  <div className="fs-5 text-primary">-</div>}                        
                   </div>
                </div>
                <div className="text-center">
