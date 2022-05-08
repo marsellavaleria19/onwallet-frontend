@@ -5,7 +5,7 @@ import input from '../../styles/input.module.scss';
 import LayoutLogin from '../../component/LayoutLogin';
 import PinInput from 'react-pin-input';
 import { registrationProcess } from '../../redux/actions/registration';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import { useRouter } from 'next/router';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
@@ -23,6 +23,7 @@ const VerifyPin = () =>{
    const [showModalLoading,setShowModalLoading] = useState(false);
    const handleCloseLoading = () => setShowModalLoading(false);
    const[control,setControl] = useState(false);
+   const dispatch = useDispatch();
 
    useEffect(()=>{
       setShowModalLoading(registration.isLoading);
