@@ -32,6 +32,7 @@ const ConfirmationTransaction= () =>{
          pin : pin,
          notes : transaction.dataTransaction.notes
       };
+      console.log(auth.token);
       dispatch(transactionProcess(data,auth.token));
       router.push('/transaction/status');
    };

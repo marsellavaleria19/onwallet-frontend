@@ -26,7 +26,7 @@ const Status= () =>{
          <div className={information.information}>
             <Container className="pt-3">
                <div className="me-3 ms-3">
-                  {/* {
+                  {
                      !transaction.isError ?
                         <div className="text-center mb-5">
                            <div className={`${transactionStyle.iconStatus} text-primary mt-5`}>
@@ -36,22 +36,14 @@ const Status= () =>{
                         </div> 
                         : 
                         <div className="text-center mb-5">
-                           <div className="fs-1 text-primary mt-5">
+                           <div className={`${transactionStyle.iconStatus} text-primary mt-5`}>
                               <VscError/>
                            </div>
                            <h1 className="mt-3 text-primary">Transfer Failed</h1>
-                           <p>We can’t transfer your money at the moment, we recommend you to check your internet connection and try again.</p>
+                           <p className='text-primary mt-3'>We can’t transfer your money at the moment, we recommend you to check your internet connection and try again.</p>
                         </div>
                         
-                  } */}
-                  
-                  <div className="text-center mb-5">
-                     <div className={`${transactionStyle.iconStatus} text-primary mt-5`}>
-                        <VscError/>
-                     </div>
-                     <h1 className="mt-3 text-primary">Transfer Failed</h1>
-                     <p className='text-primary mt-3'>We can’t transfer your money at the moment, we recommend you to check your internet connection and try again.</p>
-                  </div>
+                  }
                   <CList>
                      <div className="ms-3">
                         <div className="fs-5 fw-bold text-primary">Amount</div>
@@ -90,8 +82,8 @@ const Status= () =>{
                      {
                         transaction.isError ? <CButton className={`${inputStyle.buttonTransaction} btn-primary`} onClick={()=>router.push('/transaction/confirmation')}>Try Again</CButton> :
                            <>
-                              <CButton className={`${inputStyle.buttonTransaction} btn-primary`} >Download PDF</CButton>
-                              <Link href="/home"><a className={`${inputStyle.buttonTransaction} btn-primary`} >Back to Home</a></Link>
+                              <CButton className={`${inputStyle.buttonTransaction} btn-primary me-2`} >Download PDF</CButton>
+                              <Link href="/home"><a className={`btn ${inputStyle.buttonTransaction} pt-3 btn-primary`} >Back to Home</a></Link>
                            </>
                      }   
                   </div>

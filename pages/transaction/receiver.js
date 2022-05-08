@@ -11,17 +11,19 @@ import { getDataReceiver } from '../../redux/actions/transaction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Router, useRouter } from 'next/router';
+import {FaSearch} from 'react-icons/fa';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Receiver = () => {
    const {user,auth} = useSelector(state=>state);
-
+   const [listReceiver,setListReceiver] = useState([]);
    const dispatch = useDispatch();
    const route = useRouter();
 
 
    useEffect(()=>{
       dispatch(getAllDataUser(auth.token));
+      setListReceiver(user.listUser);
    },[]);
 
    const handleReceiver = (item,phone=null)=>{
@@ -29,6 +31,13 @@ const Receiver = () => {
       route.push('/transaction/form');
    };
 
+   const handleReceiverSearch = (event) =>{
+      console.log('masuk');
+      const search = event.target.elements['search'].value;
+      event.preventDefault();
+      const result = user.listUser.filter((item)=>item.fullName.toLowerCase().includes(search));
+      setListReceiver(result);
+   };
    // const listAllDataUser = ()=>{
    //     // dispatch(getAllDataUser(auth.token))
    //     // var listTemp = setuser.listUser.length>0 && auth.user!==null && user.listUser.filter((item)=>item.id!==auth.user.id).map((item)=>{
@@ -43,9 +52,14 @@ const Receiver = () => {
             <Container className="pt-4">
                <div className="ms-3 me-3">
                   <div className="fs-4 mb-3 fw-bold text-primary ms-2 me-2">Search Receiver</div>
-                  <Input type="text" placeholder="Search" className={`${variables.search}`}/>   
+                  <form onSubmit={handleReceiverSearch} id="form-search" className="mb-4">
+                     <div className="d-flex position-relative">
+                        <input className={`form-control ${information.formSearch}`} type="search" name="search" placeholder="Search history" aria-label="Search"/>
+                        <button className={`${information.btnSearch} position-absolute`} type="submit"><FaSearch/></button>
+                     </div>
+                  </form> 
                   {
-                     user.listUser.length>0 && auth.user!==null && user.listUser.filter((item)=>item.id!==auth.user.id).map((item)=>{
+                     listReceiver.length>0 && auth.user!==null && listReceiver.filter((item)=>item.id!==auth.user.id).map((item)=>{
                         return(
                            <>
                               {
@@ -64,7 +78,7 @@ const Receiver = () => {
                                        ); 
                                     }) 
                                     :
-                                    <div className={`${information.list} mt-3 mb-3 ms-2 me-2 d-flex align-items-center`} key={item.id} onClick={()=>handleReceiver(item)}>
+                                    <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={item.id} onClick={()=>handleReceiver(item)}>
                                        <div className="ms-3 me-4">
                                           <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
                                        </div>
