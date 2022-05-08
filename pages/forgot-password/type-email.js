@@ -11,7 +11,7 @@ import { Alert } from 'react-bootstrap';
 import { emailProcess } from '../../redux/actions/forgotPassword';
 import { useSelector,useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import validator from 'validator';
+import { validation } from '../../helpers/validation';
 import CModalLoading from '../../component/CModalLoading';
 import CModalError from '../../component/CModalError';
 import CModalSuccess from '../../component/CModalSuccess';
@@ -32,17 +32,6 @@ const EmailFogotPassword = () =>{
    const [control,setControl] = useState(false);
    const router = useRouter();
 
-
-   const validation = (email)=>{
-      const newErrors = {};
-      if(validator.isEmpty(email)){
-         newErrors.email = 'Email must be filled';
-      }else if(!validator.isEmail(email)){
-         newErrors.email = 'Email must be a email format';
-      }
-      return newErrors;
-   };
-
    useEffect(()=>{
       setShowModalLoading(forgotPassword.isLoading);
       if(forgotPassword.isLoading==false && control==true){
@@ -62,7 +51,14 @@ const EmailFogotPassword = () =>{
    const handleConfirmEmail = (event)=>{
       event.preventDefault();
       const email = event.target.elements['email'].value;
-      var validate = validation(email);
+      const data = {
+         email : email
+      };
+      const requirement = {
+         email : 'required|email'
+      };
+
+      var validate = validation(data,requirement);
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
