@@ -7,7 +7,7 @@ import input from '../styles/input.module.scss';
 // import {MdOutlineMailOutline} from "react-icons/md"
 import {BiLockAlt} from 'react-icons/bi';
 import LayoutLogin from '../component/LayoutLogin';
-import { validationForgotPassword } from '../helpers/validation';
+import { validation } from '../helpers/validation';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -50,15 +50,20 @@ const ForgotPassword = () =>{
    const handleForgotPassword = (event)=>{
       event.preventDefault();
       var data = {};
-      data.newPassword = event.target.elements['newPassword'].value;
-      data.confirmPassword = event.target.elements['confirmPassword'].value;
-      var validate = validationForgotPassword(data);
+      data['new password'] = event.target.elements['newPassword'].value;
+      data['confirm password'] = event.target.elements['confirmPassword'].value;
+      const requirement = {
+         'new password' :'required',
+         'confirm password' : 'required'
+      };
+
+      var validate = validation(data,requirement);
       console.log(data);
 
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
-         if(data.newPassword!==data.confirmPassword){
+         if(data['new password']!==data['confirm password']){
             messageError = 'New password and confirm password not match';
             setMessageError(messageError);
             setShowModalError(true);
@@ -84,11 +89,11 @@ const ForgotPassword = () =>{
                   <div className={`${input.inputContainer} mt-5`}>
                      <BiLockAlt/><Input type="password" name="newPassword" className={input.textLoginSignup} placeholder="Enter your password"/>
                   </div>
-                  {error!==null && error.newPassword ? <div className={input.error}>{error.newPassword}</div> : '' }
+                  {error!==null && error['new password'] ? <div className={input.error}>{error['new password']}</div> : '' }
                   <div className={`${input.inputContainer} mt-5`}>
                      <BiLockAlt/><Input type="password" name="confirmPassword" className={input.textLoginSignup} placeholder="Confirm your password"/>
                   </div>
-                  {error!==null && error.confirmPassword ? <div className={input.error}>{error.confirmPassword}</div> : '' }
+                  {error!==null && error['confirm password'] ? <div className={input.error}>{error['confirm password']}</div> : '' }
                   <div className="mt-5">
                      <CButton type="submit" className={input.button}>Reset</CButton>
                   </div>
