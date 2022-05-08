@@ -23,6 +23,7 @@ const VerifyPin = () =>{
    const [showModalLoading,setShowModalLoading] = useState(false);
    const handleCloseLoading = () => setShowModalLoading(false);
    const[control,setControl] = useState(false);
+   const [complete,setComplete] = useState(false);
    const dispatch = useDispatch();
 
    useEffect(()=>{
@@ -71,13 +72,14 @@ const VerifyPin = () =>{
                      inputMode="number"
                      onComplete={(value, index) => {
                         setPin(value);
+                        setComplete(true);
                      }}
                      autoSelect={true}
                      regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                   />
                </div>
                <div className="mt-5">
-                  <CButton type="submit" className={input.button}>Confirm</CButton>
+                  <CButton type="submit" disabled={!complete} className={input.button}>Confirm</CButton>
                </div>
             </form>
          </div>
