@@ -12,6 +12,12 @@ $secondary: #9AB3F5 !default;
     padding-left: 30px;
 }
 
+.buttonEdit{
+   background-color: transparent;
+   border:none;
+   color: $primary;
+}
+
 .icon{
     font-size: 20px;
 }

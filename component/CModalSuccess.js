@@ -2,7 +2,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { BiCheckCircle } from 'react-icons/bi';
-import CButton from "./CButton";
+import CButton from './CButton';
 import modal from '../styles/modal.module.scss';
 
 const CModalSuccess = ({message,show,close,button=null,functionHandle}) => {
