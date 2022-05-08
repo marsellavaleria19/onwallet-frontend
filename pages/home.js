@@ -117,7 +117,7 @@ const Home = () =>{
                               </>
                            ); 
                         }) :
-                           <div>No History</div>
+                           <div className='fs-3 fw-bold text-primary text-center mt-5'>No History</div>
                      }                 
                                     
                   </div>
