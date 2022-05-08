@@ -66,7 +66,7 @@ const Receiver = () => {
                                  item.phone.length > 0 ?
                                     item.phone.map((itemPhone)=>{
                                        return(
-                                          <div className={`${information.list} mt-3 mb-3 ms-2 me-2 d-flex align-items-center`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
+                                          <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
                                              <div className="ms-3 me-4">
                                                 <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
                                              </div>

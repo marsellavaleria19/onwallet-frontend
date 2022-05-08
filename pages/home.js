@@ -72,41 +72,48 @@ const Home = () =>{
                   <div className="ms-4 me-4 mt-3">
                      <div className="d-flex justify-content-between mb-4">
                         <div className="fs-5 fw-bold text-primary">Transaction History</div>
-                        <Link href="#"><a className="fs-6 text-primary">See all</a></Link>
+                        <Link href="/history"><a className="fs-6 text-primary">See all</a></Link>
                      </div>
                      {
                         auth.user!==null && history.listHistory.length > 0 ? history.listHistory.filter((item,index)=>index<4).map((itemHistory)=>{
                            return(
                               <>
+                                 {itemHistory.typeId==3 && itemHistory.anotherUserId!==null && itemHistory.userId==auth.user.id && <CList>
+                                    <div className="ms-3 me-3">
+                                       <Image src={auth.user.picture!==null ? auth.user.picture : '/images/profile.png'} width={50} height={50}/>
+                                    </div>
+                                    <div>
+                                       <div className="fs-5 fw-bold text-primary">{auth.user.fullName}</div>
+                                       <div className="fs-6 text-primary">{itemHistory.mutation_type.name}</div>
+                                    </div>
+                                    <div className="ms-auto me-3 text-danger fw-bold">-Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
+                                 </CList>}
                                  {
-                                    itemHistory.typeId==3 && itemHistory.anotherUserId!==null ? user.listUser.filter(item=>item.id!==auth.user.id).map((item)=>{
-                                       return(
-                                                            
-                                          item.id===itemHistory.anotherUserId || item.id===itemHistory.userId && <CList key={item.id}>
+                                    itemHistory.typeId==3 && itemHistory.anotherUserId!==null && itemHistory.anotherUserId==auth.user.id && user.listUser.map((item)=>{
+                                       return(               
+                                          item.id===itemHistory.userId && <CList key={item.id}>
                                              <div className="ms-3 me-3">
                                                 <Image src={item.picture!==null ? item.picture : '/images/profile.png'} width={50} height={50}/>
                                              </div>
                                              <div>
-                                                <div className="fs-5">{item.fullName}</div>
-                                                <div className="fs-6">{itemHistory.mutation_type.name}</div>
+                                                <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
+                                                <div className="fs-6 text-primary">Accept</div>
                                              </div>
-                                             <div className="ms-auto me-3">Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
+                                             <div className="ms-auto me-3 text-success fw-bold">+Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
                                           </CList>
                                        );
-                                    }) 
-                                       :
-                                       <CList>
-                                          <div className="ms-3 me-3">
-                                             <Image src={auth.user.picture!==null ? auth.user.picture : '/images/profile.png'} width={50} height={50}/>
-                                          </div>
-                                          <div>
-                                             <div className="fs-5">{auth.user.fullName}</div>
-                                             <div className="fs-6">{itemHistory.mutation_type.name}</div>
-                                          </div>
-                                          <div className="ms-auto me-3">Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
-                                       </CList>
-                                                
+                                    })         
                                  }
+                                 {itemHistory.typeId==1 && <CList>
+                                    <div className="ms-3 me-3">
+                                       <Image src={auth.user.picture!==null ? auth.user.picture : '/images/profile.png'} width={50} height={50}/>
+                                    </div>
+                                    <div>
+                                       <div className="fs-5 fw-bold text-primary">{auth.user.fullName}</div>
+                                       <div className="fs-6 text-primary">{itemHistory.mutation_type.name}</div>
+                                    </div>
+                                    <div className="ms-auto me-3 text-success fw-bold">+Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
+                                 </CList>}
                               </>
                            ); 
                         }) :
