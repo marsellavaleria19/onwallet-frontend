@@ -3,6 +3,7 @@ import AxiosCostum from '../../helpers/AxiosCostum'
 
 
 export const addPhoneNumber = (phoneNumber,token) => {
+    
     const data = {number:phoneNumber};
     return {
         type: 'PHONE',
