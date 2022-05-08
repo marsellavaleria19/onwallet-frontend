@@ -15,6 +15,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import {FaPencilAlt} from 'react-icons/fa';
 import { Form } from 'react-bootstrap';
 import { getDataTransaction } from '../../redux/actions/transaction';
+import { validation } from '../../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const InputTransfer= () =>{
@@ -24,26 +25,26 @@ const InputTransfer= () =>{
    const [amount,setAmount] = useState(0);
    const dispatch = useDispatch();
     
-   const validation = (amount)=>{
-      const newErrors = {};
-      if(!amount || amount===''){
-         newErrors.amount = 'Amount must be filled';
-      }else if(amount==0){
-         newErrors.amount = 'Amount must be grather than 0';
-      }else if(auth.balance!==null){
-         if(amount > auth.balance){
-            newErrors.amount = 'the balance is not sufficient';
-         }
-      }
-
-      return newErrors;
-   };
+   
 
    const handleTransaction = (event)=>{
       event.preventDefault();
-      var data = {};
+      const data = {amount:amount.toString()};
+      const requirement = {
+         amount:'required|number'
+      };
       var notes =  event.target.elements['notes'].value;
-      var validate = validation(amount);
+      var validate = validation(data,requirement);
+      if(Object.keys(validate).length==0){
+         if(amount<10000){
+            validate.amount = 'amount must be grather than 10.000';
+         }
+         if(auth.balance!==null){
+            if(amount > auth.balance){
+               validate.amount = 'the balance is not sufficient';
+            }
+         }
+      }
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
