@@ -75,6 +75,13 @@ const PersonalInformation= () =>{
       dispatch(updateDataUser(auth.token,file));
       setControl(true);
    };
+
+   const handleLogout = (event)=>{
+      event.preventDefault();
+      dispatch({
+         type : 'LOGOUT'
+      });
+   };
  
    return (
       <Layout>          
@@ -101,7 +108,7 @@ const PersonalInformation= () =>{
                   <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/personal-information')}>Personal Information</CButton></div>
                   <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/change-password')}>Change Password</CButton></div>
                   <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/verify-pin')}>Change PIN</CButton></div>
-                  <div><CButton className={`${profile.button} btn-primary mb-3`}>Logout</CButton></div>
+                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={handleLogout}>Logout</CButton></div>
                </div>
             </Container>
          </div>          

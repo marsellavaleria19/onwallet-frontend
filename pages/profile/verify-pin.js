@@ -71,6 +71,7 @@ const VerifyPin= () =>{
                         setComplete(false);
                      }} 
                      type="numeric" 
+                     secret
                      inputMode="number"
                      onComplete={(value, index) => {
                         console.log('complete!!');

@@ -11,10 +11,10 @@ import { useEffect, useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { addPhoneNumber } from '../../redux/actions/phone';
 import { useRouter } from 'next/router';
-import {validationPhoneNumber} from '../../helpers/validation';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
 import CModalSuccess from '../../component/CModalSuccess';
+import { validation } from '../../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const AddPhoneNumber= () =>{
@@ -55,12 +55,20 @@ const AddPhoneNumber= () =>{
    const handlePhoneNumber = (event)=>{
       event.preventDefault();
       var phoneNumber = event.target.elements['phone'].value;
-      var validate = validationPhoneNumber(phoneNumber);
+      const data = {
+         'phone number' : phoneNumber
+      };
+
+      const requirement = {
+         'phone number' : 'required|phone'
+      };
+
+      var validate = validation(data,requirement);
       console.log(validate);
       if(Object.keys(validate).length > 0){
          setError(validate);
       }else{
-         dispatch(addPhoneNumber(phoneNumber,auth.token));
+         dispatch(addPhoneNumber(data['phone number'],auth.token));
          setControl(true);
       }
    };
@@ -84,7 +92,7 @@ const AddPhoneNumber= () =>{
                         <AiOutlinePhone/>
                         <Input type="text" name="phone" className={input.textLoginSignup} placeholder="Phone"/>
                      </div>
-                     {error!==null && error.phoneNumber ? <div className={input.error}>{error.phoneNumber}</div> : '' }
+                     {error!==null && error['phone number'] ? <div className={input.error}>{error['phone number']}</div> : '' }
                      <div className="mt-5">
                         <CButton type="submit" className={`${input.button} btn-primary mb-5`}>Change Phone Number</CButton>
                      </div>
