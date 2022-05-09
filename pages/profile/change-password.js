@@ -14,6 +14,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
 import CModalSuccess from '../../component/CModalSuccess';
+import { validation } from '../../helpers/validation';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const ChangePassword= () =>{
@@ -56,13 +57,20 @@ const ChangePassword= () =>{
    const handlePassword = (event)=>{
       event.preventDefault();
       var data = {};
-      data.currentPassword = event.target.elements['currentPassword'].value;
-      data.newPassword = event.target.elements['newPassword'].value;
-      data.repeatPassword = event.target.elements['repeatPassword'].value;
-      var validate = validationPassword(data);
+      data['current password'] = event.target.elements['currentPassword'].value;
+      data['new password'] = event.target.elements['newPassword'].value;
+      data['repeat password'] = event.target.elements['repeatPassword'].value;
+      const requirement = {
+         'current password' : 'required',
+         'new password' : 'required',
+         'repeat password' : 'required'
+      };
+
+      var validate = validation(data,requirement);
+      console.log(data);
       if(Object.keys(validate).length > 0){
          setError(validate);
-      }else if(data.newPassword!==data.repeatPassword){
+      }else if(data['new password']!==data['repeat password']){
          messageError = 'New password and repeat password not match';
          setMessageError(messageError);
          setShowModalError(true);
@@ -91,17 +99,17 @@ const ChangePassword= () =>{
                      <BiLockAlt/>
                      <Input type="password" name="currentPassword" className={input.textLoginSignup} placeholder="Current Password "/>
                   </div>
-                  {error!==null && error.currentPassword ? <div className={input.error}>{error.currentPassword}</div> : '' }
+                  {error!==null && error['current password'] ? <div className={input.error}>{error['current password']}</div> : '' }
                   <div className={`${input.inputContainer} mt-5`}>
                      <BiLockAlt/>
                      <Input type="password" name="newPassword" className={input.textLoginSignup} placeholder="New Password "/>
                   </div>
-                  {error!==null && error.newPassword ? <div className={input.error}>{error.newPassword}</div> : '' }
+                  {error!==null && error['new password'] ? <div className={input.error}>{error['new password']}</div> : '' }
                   <div className={`${input.inputContainer} mt-5`}>
                      <BiLockAlt/>
                      <Input type="password" name="repeatPassword" className={input.textLoginSignup} placeholder="Repeat New Password "/>
                   </div>
-                  {error!==null && error.repeatPassword ? <div className={input.error}>{error.repeatPassword}</div> : '' }
+                  {error!==null && error['repeat password'] ? <div className={input.error}>{error['repeat password']}</div> : '' }
                   <div>
                      <CButton className={`${input.buttonPassword}`} type="submit">Change Password</CButton>
                   </div>
