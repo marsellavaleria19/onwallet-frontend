@@ -73,6 +73,7 @@ const ChangePin= () =>{
                      }} 
                      type="numeric" 
                      inputMode="number"
+                     secret
                      onComplete={(value, index) => {
                         console.log('complete!!');
                         setPin(value);
