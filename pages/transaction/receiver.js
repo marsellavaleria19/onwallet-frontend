@@ -11,7 +11,8 @@ import { getDataReceiver } from '../../redux/actions/transaction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Router, useRouter } from 'next/router';
-import {FaSearch} from 'react-icons/fa';
+import {FaSearch,FaAngleDoubleDown} from 'react-icons/fa';
+import CNotFound from '../../component/CNotFound';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const Receiver = () => {
@@ -19,7 +20,10 @@ const Receiver = () => {
    const [listReceiver,setListReceiver] = useState([]);
    const dispatch = useDispatch();
    const route = useRouter();
-
+   var [page,setPage] = useState(1);
+   const [limit,setLimit] = useState(5);
+   const [defaultLimit,setDefaultLimit] = useState(5);
+   var [next,setNext] = useState(null);
 
    useEffect(()=>{
       dispatch(getAllDataUser(auth.token));
@@ -33,10 +37,22 @@ const Receiver = () => {
 
    const handleReceiverSearch = (event) =>{
       console.log('masuk');
-      const search = event.target.elements['search'].value;
+      // const search = event.target.elements['search'].value;
       event.preventDefault();
+      const search = event.target.value;
       const result = user.listUser.filter((item)=>item.fullName.toLowerCase().includes(search));
       setListReceiver(result);
+   };
+
+   const pagination = (page=null)=>{
+      if(page!==null){
+         setPage(page);
+         var countLimit = defaultLimit*page;
+         console.log(countLimit);
+         console.log(listReceiver.length);
+         setLimit(countLimit);
+         setNext(countLimit);
+      }
    };
    // const listAllDataUser = ()=>{
    //     // dispatch(getAllDataUser(auth.token))
@@ -52,42 +68,43 @@ const Receiver = () => {
             <Container className="pt-4">
                <div className="ms-3 me-3">
                   <div className="fs-4 mb-3 fw-bold text-primary ms-2 me-2">Search Receiver</div>
-                  <form onSubmit={handleReceiverSearch} id="form-search" className="mb-4">
+                  <form onSubmit={handleReceiverSearch} id="form-search" className="mb-5">
                      <div className="d-flex position-relative">
-                        <input className={`form-control ${information.formSearch}`} type="search" name="search" placeholder="Search history" aria-label="Search"/>
-                        <button className={`${information.btnSearch} position-absolute`} type="submit"><FaSearch/></button>
+                        <input className={`form-control ${information.formSearch}`} type="search" name="search" placeholder="Search receiver here" aria-label="Search" onChange={handleReceiverSearch}/>
+                        <button className={`${information.btnSearch} position-absolute`} type="submit" disabled={true}><FaSearch/></button>
                      </div>
                   </form> 
-                  {
-                     listReceiver.length>0 && auth.user!==null && listReceiver.filter((item)=>item.id!==auth.user.id).map((item)=>{
-                        return(
-                           <>
-                              {
-                                 item.phone.length > 0 ?
-                                    item.phone.map((itemPhone)=>{
-                                       return(
-                                          <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
-                                             <div className="ms-3 me-4">
-                                                <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
+                  <div className='mt-3'>
+                     {
+                        listReceiver.length>0 && auth.user!==null ? listReceiver.filter((item)=>item.id!==auth.user.id).filter((item,index)=>index<limit).map((item)=>{
+                           return(
+                              <>
+                                 {
+                                    item.phone.length > 0 ?
+                                       item.phone.map((itemPhone)=>{
+                                          return(
+                                             <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={itemPhone.id} onClick={()=>handleReceiver(item,itemPhone)}>
+                                                <div className="ms-3 me-4">
+                                                   <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
+                                                </div>
+                                                <div>   
+                                                   <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
+                                                   <div className="fs-6 text-primary mt-2">{itemPhone.number}</div>
+                                                </div>
                                              </div>
-                                             <div>   
-                                                <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
-                                                <div className="fs-6 text-primary mt-2">{itemPhone.number}</div>
-                                             </div>
+                                          ); 
+                                       }) 
+                                       :
+                                       <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={item.id} onClick={()=>handleReceiver(item)}>
+                                          <div className="ms-3 me-4">
+                                             <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
                                           </div>
-                                       ); 
-                                    }) 
-                                    :
-                                    <div className={`${information.list} mt-3 mb-3 d-flex align-items-center`} key={item.id} onClick={()=>handleReceiver(item)}>
-                                       <div className="ms-3 me-4">
-                                          <Image src={item.picture===null ? '/images/profile.png' : item.picture} width={50} height={50}/>
-                                       </div>
-                                       <div>        
-                                          <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
-                                          <div className="fs-6 text-primary">-</div>
-                                       </div>
+                                          <div>        
+                                             <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
+                                             <div className="fs-6 text-primary">-</div>
+                                          </div>
                                             
-                                    </div>
+                                       </div>
                                         
                                  //       <Row className={`${information.list} mt-3 mb-3 ms-2 me-2`} key={item.id} onClick={()=>handleReceiver(item)}>
                                  //       <Col xs={2}>
@@ -98,11 +115,16 @@ const Receiver = () => {
                                  //           <div className="fs-6 text-primary">-</div>
                                  //       </Col>
                                  //   </Row>
-                              }
-                           </>
-                        );
-                     })
-                  }
+                                 }
+                              </>
+                           );
+                        }): <CNotFound />
+                     }
+                     {next < listReceiver.length-1 ? <div className='text-center mt-3 mb-2'>
+                        <CButton onClick={()=>pagination(page+1)} className={information.btnNext}>Load more <FaAngleDoubleDown/></CButton>
+                     </div> :''
+                     }
+                  </div>
                </div>
                    
                     
