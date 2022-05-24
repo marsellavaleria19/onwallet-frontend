@@ -38,7 +38,7 @@ const Menu = ()=>{
    };
 
    return(
-      <div className={`${menu.menu} mb-5`}>
+      <div className={`${menu.menu}`}>
          <ul className={`${menu.menuItem}`}>
             {
                listMenu.map(item => {
