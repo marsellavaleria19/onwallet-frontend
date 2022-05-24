@@ -1,10 +1,10 @@
-import { Form} from "react-bootstrap";
-import variable from "../styles/input.module.scss";
+import { Form} from 'react-bootstrap';
+import variable from '../styles/input.module.scss';
 
 const Input = ({children,...rest})=>{
-    return(
+   return(
       <Form.Control type={rest.type} className="form-control" id="exampleFormControlInput1" {...rest}/>
-      )
-}
+   );
+};
 
-export default Input
+export default Input;
