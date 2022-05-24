@@ -1,0 +1,16 @@
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
+$font-family:'Nunito Sans';
+
+.textName {
+   font-family: $font-family;
+   font-size: 18px;
+   font-weight: 70px;
+   color: $primary;
+}
+
+.textPhone {
+   font-family: $font-family;
+   font-size: 13px;
+   color: $primary;
+}
