@@ -28,7 +28,7 @@ const auth = (state = dataLogin, action) => {
    }
    case 'LOGIN_REJECTED':
    {
-      const { data } = action.payload.response;
+      const { data } = action.payload;
       state.isLoading = false;
       state.isError = true;
       state.errMessage = data.message;

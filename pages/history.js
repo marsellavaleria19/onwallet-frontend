@@ -1,11 +1,12 @@
 // import { Button } from "bootstrap";
-import { Container } from 'react-bootstrap';
+import { Container,Form } from 'react-bootstrap';
 import Layout from '../component/Layout';
 import information from '../styles/information.module.scss';
 import Image from 'next/image';
 import {useSelector } from 'react-redux';
 import {FaSearch} from 'react-icons/fa';
 import CList from '../component/CList';
+// import history from '../styles/history.module.scss';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const History = () => {
@@ -19,11 +20,26 @@ const History = () => {
                <div className="ms-3 me-3">
                   <div className='d-flex justify-content-between'>
                      <div className="fs-4 mb-3 fw-bold text-primary ms-2 me-2">Transaction History</div>
-                     <form id="form-search" className="mb-4">
-                        <div className="d-flex position-relative">
-                           <input className="form-control" type="search" name="search" placeholder="Search history" aria-label="Search"/>
+                     <div className="accordion" id="accordionExample">
+                        <div className="accordion-item">
+                           <h2 className="accordion-header" id="headingOne">
+                              <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                 -- Select Filter --
+                              </button>
+                           </h2>
+                           <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                              
+                           </div>
                         </div>
-                     </form> 
+                     </div>
+                     {/* <form id="form-search" className="mb-4">
+                        <div className="d-flex position-relative">
+                           <Form.Select id="disabledSelect">
+                              <option style={{display:'none'}}>-- Select Filter --</option>
+                              <option>Transaction Type</option>
+                           </Form.Select>
+                        </div>
+                     </form> */}
                   </div>
                  
                   {

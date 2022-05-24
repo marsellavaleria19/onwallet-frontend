@@ -10,7 +10,7 @@ import { getListHistory } from '../redux/actions/history';
 import { getAllDataUser } from '../redux/actions/user';
 import { getDataUser,getBalance,getListPhoneProfile } from '../redux/actions/auth';
 
-const Layout = (props)=>{
+const Layout = ({children})=>{
 
    const auth = useSelector(state=>state.auth);
    const router = useRouter();
@@ -37,16 +37,17 @@ const Layout = (props)=>{
          {auth.token!==null &&
             <>
                <NavbarComponent/>
-               <Container className="g-0 vh-80">
-                  <Row className="mt-5">
-                     <Col md="5" lg="4" xl="3">
+               <Container>
+                  <Row className="mt-5 mb-3">
+                     <Col className='d-none d-lg-block' lg="4" xl="3">
                         <Menu/>
                      </Col>
-                     <Col md="7" xl="9">
-                        {props.children}
+                     <Col lg="8" xl="9">
+                        {children}
                      </Col>
                   </Row>
                </Container>
+             
                <Footer/>
             </> 
          }

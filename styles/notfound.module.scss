@@ -1,0 +1,20 @@
+$primary: #6E3CBC !default;
+$secondary: #9AB3F5 !default;
+$font-family : 'Nunito Sans';
+
+.layoutNotFound {
+   text-align: center;
+   padding-top: 50px;
+}
+
+.iconSad{
+   color: $primary;
+   font-size: 100px;
+}
+
+.textNotFound {
+    font-size: 30px;
+    font-family: $font-family;
+    color: $primary;
+    font-weight: 700;
+}
