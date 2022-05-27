@@ -18,3 +18,21 @@ $third : #FFDDEE !default;
    color: $primary;
    font-size: 100px;
 }
+
+.buttonModal {
+   height:40px;
+   width: 100%;
+   border-radius: 12px;
+   font-weight: 700;
+   color: $secondary;
+}
+
+.buttonModal:hover {
+  background-color: $secondary;
+  color : $primary;
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}

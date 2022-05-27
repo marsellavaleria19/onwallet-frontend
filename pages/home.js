@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import BarChart from '../component/BarChart';
 import CList from '../component/CList';
 import Link from 'next/link';
+import CNotFound from '../component/CNotFound';
 
 // import NavbarComponent from "../component/NavbarComponent";
 
@@ -82,7 +83,7 @@ const Home = () =>{
                         <Link href="/history"><a className="fs-6 text-primary">See all</a></Link>
                      </div>
                      {
-                        auth.user!==null && history.listHistory.length > 0 ? history.listHistory.filter((item,index)=>index<4).map((itemHistory)=>{
+                        auth.user!==null && history.listHistory.length > 0 ? history.listHistory.sort((history1,history2)=>history2.id < history1.id ? -1 : 0).filter((item,index)=>index<4).map((itemHistory)=>{
                            return(
                               <>
                                  {itemHistory.typeId==3 && itemHistory.anotherUserId!==null && itemHistory.userId==auth.user.id && <CList>
@@ -104,7 +105,7 @@ const Home = () =>{
                                              </div>
                                              <div>
                                                 <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
-                                                <div className="fs-6 text-primary">Accept</div>
+                                                <div className="fs-6 text-primary">{itemHistory.mutation_type.name}</div>
                                              </div>
                                              <div className="ms-auto me-3 text-success fw-bold">+Rp. {Number(itemHistory.amount).toLocaleString('id-ID')}</div>
                                           </CList>
@@ -124,7 +125,7 @@ const Home = () =>{
                               </>
                            ); 
                         }) :
-                           <div className='fs-3 fw-bold text-primary text-center mt-5'>No History</div>
+                           <CNotFound/>
                      }                 
                                     
                   </div>

@@ -25,6 +25,9 @@ const Layout = ({children})=>{
 
    useEffect(()=>{
       if(auth.token){
+         dispatch({
+            type:'CLEAR_HISTORY'
+         });
          dispatch(getAllDataUser(auth.token));
          dispatch(getDataUser(auth.token));
          dispatch(getBalance(auth.token));

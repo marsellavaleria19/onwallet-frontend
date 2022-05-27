@@ -14,22 +14,9 @@ const CModal = ({show,functionClose,children,title,button,functionSave}) => {
             </div>
          </Modal.Body>
          <Modal.Footer className={modal.modalBody}>
-            <CButton variant='primary' onClick={functionSave}>{button}</CButton>
+            <CButton className={modal.buttonModal} onClick={functionSave}>{button}</CButton>
          </Modal.Footer>
       </Modal>
-   //      <Modal show={show} onHide={functionClose}  size="md"
-   //      aria-labelledby="contained-modal-title-vcenter"
-   //      centered>
-   //      <Modal.Header closeButton>
-   //      <Modal.Title>{title}</Modal.Title>
-   //      </Modal.Header>
-   //      <Modal.Body>{children}</Modal.Body>
-   //      <Modal.Footer>
-   //      <CButton variant="primary" onClick={functionSave}>
-   //          Save Changes
-   //      </CButton>
-   //      </Modal.Footer>
-   //  </Modal>
    );
 };
 

@@ -31,15 +31,15 @@ $third : #FFDDEE !default;
 
 .textPin {
     background-color:transparent;
-    color: white !important;
+    color: $primary;
     border: none;
     width: 53px;
-    border-bottom: 1.5px solid $primary;
+    border: 1.5px solid $primary;
+    border-radius: 8px;
     height: 65px;
     font-size: 16px;
     font-family: $font-family;
 }
-
 
 .textPin:focus {
     outline: none;
@@ -48,6 +48,24 @@ $third : #FFDDEE !default;
     border-bottom: 1.5px solid $primary;
 }
 
+.pincodeInputContainer
+{
+  .pincodeInput
+  {
+    padding:0 !important;
+    margin:0 2px;
+    text-align:center;
+    border: 1px solid $primary;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+  }
+  .pincodeInput:focus
+  {
+    outline:none;
+    box-shadow:none;
+  }
+}
 
 .button {
     height:57px;
@@ -143,5 +161,12 @@ $third : #FFDDEE !default;
     .button{
         width : 100%;
     }
+    .buttonTransaction{
+      width : 100%;
+      margin-bottom: 20px;
+   }
+  .buttonTransaction:focus{
+   width : 100%;
+   }
 }
 

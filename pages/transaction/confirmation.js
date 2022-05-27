@@ -109,6 +109,7 @@ const ConfirmationTransaction= () =>{
                               setPin(value);
                            }}
                            autoSelect={true}
+                           inputStyle={{border:'1px solid #F73D93',borderRadius:'8px',color:'#F73D93'}}
                            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                         />
                      </CModal>

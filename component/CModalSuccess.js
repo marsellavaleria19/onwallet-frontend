@@ -20,7 +20,7 @@ const CModalSuccess = ({message,show,close,button=null,functionHandle}) => {
             {
                button!==null &&
                   <Modal.Footer className={modal.modalBody}>
-                     <CButton btnVarian={'button-filled fw-bold w-100'} onClick={functionHandle}>{button}</CButton>
+                     <CButton className={modal.buttonModal} onClick={functionHandle}>{button}</CButton>
                   </Modal.Footer>
             }
          </Modal>
