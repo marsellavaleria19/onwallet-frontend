@@ -16,7 +16,7 @@ const LayoutLogin = (props) =>{
             <Col sm={6} className={login.background}>
                <div className="p-5">
                   <div className="fs-1 fw-bold text-white mt-5">On-Wallet</div>
-                  <Image src="/images/cover-login.png" width={600} height={700} alt="phone"/>
+                  <Image src="/images/cover-login.png" width={700} height={700} alt="phone"/>
                   <div className={login.footer}>
                      <div className="fs-3 text-white fw-bold">App that Covering Banking Needs.</div>
                      <div className="fs-5 text-white mt-3 mb-5">Zwallet is an application that focussing in banking needs for all users
