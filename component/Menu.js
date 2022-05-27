@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {IoGridOutline} from 'react-icons/io5';
 import {VscArrowUp} from 'react-icons/vsc';
 import {HiPlus} from 'react-icons/hi';
+import {FiLogOut} from 'react-icons/fi';
 import {RiUser3Line} from 'react-icons/ri';
 import { useEffect,useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
@@ -38,32 +39,32 @@ const Menu = ()=>{
    };
 
    return(
-      <div className={`${menu.menu}`}>
-         <ul className={`${menu.menuItem}`}>
-            {
-               listMenu.map(item => {
-                  const Icon = item.icon;
-                  return (
-                     <li key={item.menu}>
-                        <Link href={item.link}>
-                           <a className={activeMenu===item.link?'active':''}>
-                              <Icon className='me-3' />
-                              {item.menu}
-                           </a>
-                        </Link>
-                     </li>
-                  );
-               })}
-            {/* <li><Link href="#"><a><IoGridOutline/>Dashboard</a></Link></li>
-                <li><Link href="#"><a><VscArrowUp/>Transfer</a></Link></li>
-                <li><Link href="#"><a><HiPlus/>Topup</a></Link></li>
-                <li><Link href="#"><a><RiUser3Line/>Profile</a></Link></li>
-                <li><Link href="#"><a>Logout</a></Link></li> */}
-         </ul>
-         <div className="text-center">
-            <CButton onClick={handleLogout}>Logout</CButton>
+      <div className='position-relative'>
+         <div className={`${menu.menu}`}>
+            <ul className={`${menu.menuItem}`}>
+               {
+                  listMenu.map(item => {
+                     const Icon = item.icon;
+                     return (
+                        <li key={item.menu}>
+                           <Link href={item.link}>
+                              <a className={activeMenu===item.link?'active':''}>
+                                 <Icon className={`${menu.iconMenu} me-3`} />
+                                 {item.menu}
+                              </a>
+                           </Link>
+                        </li>
+                     );
+                  })}
+               <div className={`${menu.layoutButtonLogout}`}>
+                  <FiLogOut className={menu.iconMenu}/>
+                  <CButton onClick={handleLogout} className={menu.buttonLogout}>Logout</CButton>
+               </div>
+            </ul>
+            
          </div>
       </div>
+      
     
    // <Nav defaultActiveKey="/home" className={`${menu.menu} flex-column`}>
    //     <Nav.Link className={`${menu.navLink} mt-5 mb-5`} href="/home">Dashboard</Nav.Link>
