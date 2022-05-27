@@ -96,7 +96,7 @@ const PersonalInformation= () =>{
                      messageSuccess!=='' && <CModalSuccess message={messageSuccess} show={showModalSuccess} close={handleCloseSuccess}/>
                   }
                   <div className="text-center mt-5">
-                     <Image src={image} width={80} height={80} className="mb-2"/>
+                     <Image src={image} width={80} height={80} className="img-fluid rounded"/>
                      {/* <div><Button href="/profile/personal-information"><a className="fs-5"><FaPencilAlt className="me-2"/>Edit</a></Link></div> */}
                      <input id="fileUpload" type="file" name="picture" hidden onChange={selectedFile}/>   
                      <div><CButton className={profile.buttonEdit} onClick={chooseFiles}><FaPencilAlt className="me-2"/>Edit</CButton></div>
