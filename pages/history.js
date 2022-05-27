@@ -182,7 +182,7 @@ const History = () => {
                         }) : <CNotFound/>
                      }          
                   </div>
-                  {next < listHistory.length-1 ? <div className='text-center mt-3 mb-2'>
+                  {listHistory.length > limit && next < listHistory.length-1 ? <div className='text-center mt-3 mb-2'>
                      <CButton onClick={()=>pagination(page+1)} className={information.btnNext}>Load more <FaAngleDoubleDown/></CButton>
                   </div> :''
                   }    
