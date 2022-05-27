@@ -21,8 +21,8 @@ const Receiver = () => {
    const dispatch = useDispatch();
    const route = useRouter();
    var [page,setPage] = useState(1);
-   const [limit,setLimit] = useState(5);
-   const [defaultLimit,setDefaultLimit] = useState(5);
+   const [limit,setLimit] = useState(4);
+   const [defaultLimit,setDefaultLimit] = useState(4);
    var [next,setNext] = useState(null);
 
    useEffect(()=>{
@@ -36,11 +36,12 @@ const Receiver = () => {
    };
 
    const handleReceiverSearch = (event) =>{
-      console.log('masuk');
-      // const search = event.target.elements['search'].value;
       event.preventDefault();
+      setListReceiver(listReceiver.splice(listReceiver,0));
+      listReceiver  = [...user.listUser];
+      setListReceiver(listReceiver);
       const search = event.target.value;
-      const result = user.listUser.filter((item)=>item.fullName.toLowerCase().includes(search));
+      const result = listReceiver.filter((item)=>item.fullName.toLowerCase().includes(search));
       setListReceiver(result);
    };
 
@@ -54,14 +55,7 @@ const Receiver = () => {
          setNext(countLimit);
       }
    };
-   // const listAllDataUser = ()=>{
-   //     // dispatch(getAllDataUser(auth.token))
-   //     // var listTemp = setuser.listUser.length>0 && auth.user!==null && user.listUser.filter((item)=>item.id!==auth.user.id).map((item)=>{
-   //     //     return item
-   //     // })
-
-   //     // setListUser(listTemp)
-   // }
+  
    return (
       <Layout>          
          <div className={information.information}>
@@ -120,7 +114,7 @@ const Receiver = () => {
                            );
                         }): <CNotFound />
                      }
-                     {next < listReceiver.length-1 ? <div className='text-center mt-3 mb-2'>
+                     {next < listReceiver.length-1 ? <div className='text-center mt-5 mb-5'>
                         <CButton onClick={()=>pagination(page+1)} className={information.btnNext}>Load more <FaAngleDoubleDown/></CButton>
                      </div> :''
                      }
