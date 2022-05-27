@@ -1,13 +1,16 @@
 
-$primary: #6E3CBC !default;
-$secondary: #9AB3F5 !default;
+// $primary: #6E3CBC !default;
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
 
 .menu{
     background-color: $secondary;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
     border-radius: 25px;
     width : 100%;
-    min-height: 810px;
+    min-height: 830px;
     border: 1px solid $primary;
 }
 
@@ -36,4 +39,37 @@ $secondary: #9AB3F5 !default;
 .menuItem li a.active{
     font-weight: 700;
     border-left: 2px solid $primary;
+}
+
+.layoutButtonLogout{
+   position: absolute;
+   bottom: 50px;
+   margin-bottom: 40px;
+ 
+}
+
+.iconMenu{
+   color: $primary;
+   font-size: 18px;
+}
+
+.iconMenu:hover{
+   color: $primary;
+   font-size: 18px;
+   font-weight: 700;
+}
+
+.buttonLogout{
+   font-size: 18px;
+   background-color: transparent;
+   color: #F73D93;
+   border: none;
+}
+
+.buttonLogout:hover{
+   font-size: 18px;
+   background-color: transparent;
+   color: #F73D93;
+   font-weight: 700;
+   border: none;
 }
