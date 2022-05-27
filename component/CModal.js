@@ -14,7 +14,7 @@ const CModal = ({show,functionClose,children,title,button,functionSave}) => {
             </div>
          </Modal.Body>
          <Modal.Footer className={modal.modalBody}>
-            <CButton variant='primary' onClick={functionSave}>{button}</CButton>
+            <CButton className={modal.buttonModal} onClick={functionSave}>{button}</CButton>
          </Modal.Footer>
       </Modal>
    );
