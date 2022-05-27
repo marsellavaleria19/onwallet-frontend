@@ -94,27 +94,30 @@ const Topup= () =>{
    return (  
       <Layout>          
          <div className={information.information}>
-            <Container className="pt-3">
-               <div className="fs-4 mb-5 fw-bold text-primary">Topup</div>
-               <div className="mt-5 mb-5 ms-3">
-                  <p className="fs-6 text-primary">Type the amount you want to topup.</p>
+            <Container className="pt-4">
+               <div className="ms-3 me-3">
+                  <div className="fs-4 mb-5 fw-bold text-primary">Topup</div>
+                  <div className="mt-5 mb-5 ms-3">
+                     <p className="fs-6 text-primary">Type the amount you want to topup.</p>
+                  </div>
+                  <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
+                  {
+                     messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
+                  }
+                  {
+                     messageSuccess!=='' && <CModalSuccess message={messageSuccess} show={showModalSuccess} close={handleCloseSuccess} button="Go to home" functionHandle={goToHomepage}/>
+                  }
+                  <Form className="text-center mt-5 ms-3 me-3" onSubmit={handleTopup}>
+                     <div className={`${input.inputContainer} mt-5 mb-5`}>
+                        <Input type="text" name="amount" className={input.textLoginSignup} placeholder="Amount"/>
+                     </div>
+                     {error!==null && error.amount ? <div className={input.error}>{error.amount}</div> : '' }
+                     <div className="text-end mb-4">
+                        <CButton type="submit" className={input.buttonTransaction}>Topup</CButton>
+                     </div>
+                  </Form>
                </div>
-               <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
-               {
-                  messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
-               }
-               {
-                  messageSuccess!=='' && <CModalSuccess message={messageSuccess} show={showModalSuccess} close={handleCloseSuccess} button="Go to home" functionHandle={goToHomepage}/>
-               }
-               <Form className="text-center mt-5 ms-3 me-3" onSubmit={handleTopup}>
-                  <div className={`${input.inputContainer} mt-5 mb-5`}>
-                     <Input type="text" name="amount" className={input.textLoginSignup} placeholder="Amount"/>
-                  </div>
-                  {error!==null && error.amount ? <div className={input.error}>{error.amount}</div> : '' }
-                  <div className="text-end mb-4">
-                     <CButton type="submit" className={input.buttonTransaction}>Topup</CButton>
-                  </div>
-               </Form>
+              
             </Container>
          </div>          
       </Layout>

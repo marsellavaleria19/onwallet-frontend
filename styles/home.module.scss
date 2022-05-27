@@ -1,5 +1,7 @@
-$primary: #6E3CBC !default;
-$secondary: #9AB3F5 !default;
+// $primary: #6E3CBC !default;
+$primary : #F73D93 !default;
+// $secondary: #9AB3F5 !default;
+$secondary : #FFFFFF !default;
 $font-family : 'Nunito Sans';
 
 .balance{
@@ -23,9 +25,8 @@ $font-family : 'Nunito Sans';
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
     border-radius: 25px;
     width: 100%;
-    min-height: 600px;
+    min-height: 620px;
 }
-
 
 .textBalance {
     font-size: 18px;
@@ -35,8 +36,4 @@ $font-family : 'Nunito Sans';
 .button {
     height: 57px;
     width: 100%;
-}
-
-.main{
-   min-height: calc(100vh - 100px);
 }

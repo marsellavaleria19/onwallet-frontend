@@ -4,7 +4,7 @@ import { Container, Navbar,Row,Col } from 'react-bootstrap';
 import homepage from '../styles/homepage.module.scss';
 import NavbarHomepage from '../component/NavbarHomePage';
 import CButton from '../component/CButton';
-import {AiOutlinePhone,AiOutlineArrowLeft} from 'react-icons/ai';
+import {AiOutlinePhone,AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai';
 import {BiLockAlt,} from 'react-icons/bi';
 import {BsDownload} from 'react-icons/bs';
 // import styles from '../styles/Home.module.css'
@@ -94,15 +94,13 @@ export default function Home() {
             </Container>
          </section>
          <section className={homepage.sectionFeatureWallet}>
-            <Container>
-               <div className='mb-4'>
-                  <Row>
-                     <Col md={5}>
-                        <div clssName="position-relative">
-                           <Image src="/images/phone-cover.png" className='msposition-absolute' width={900} height={1500} alt="phone1"/>
-                        </div>
-                     </Col>
-                     <Col md={7}>
+            <div className='mb-4'>
+               <Row>
+                  <Col md={5}>
+                     <Image src="/images/phone-cover.png" className='msposition-absolute' width={1200} height={1000} alt="phone1"/>
+                  </Col>
+                  <Col md={6}>
+                     <div className='me-5'>
                         <h1 className={`${homepage.description} mt-5 fw-bold text-primary`}>All The Great On-Wallet Features</h1>
                         <div className={`${homepage.detailFeature} mt-3 ps-3 pt-2`}>
                            <div className='fs-4 text-primary fw-bold'>1. Small Fee</div>
@@ -116,10 +114,11 @@ export default function Home() {
                            <div className='fs-4 text-primary fw-bold'>3. User Friendly</div>
                            <div className='fs-6 text-primary mt-2 mb-3'>Zwallet come up with modern and sleek design and not complicated..</div>
                         </div>
-                     </Col>
-                  </Row>  
-               </div>      
-            </Container>
+                     </div>
+                     
+                  </Col>
+               </Row>  
+            </div>      
          </section>
          <section>
             <Container>
@@ -142,14 +141,14 @@ export default function Home() {
                      </div>
                   </div>
                   <div  className={`${homepage.arrow} ms-3 text-center`}>
-                     <AiOutlineArrowLeft/>
+                     <AiOutlineArrowRight/>
                   </div>
                </div>
             </Container>
          </section>
          <footer className={homepage.footer}>
             <Container>
-               <Row className='mb-5'>
+               <Row className='mb-5 pt-5'>
                   <Col xs={3}>
                      <div className='mt-4'>
                         <h1>On-Wallet</h1>
@@ -159,6 +158,7 @@ export default function Home() {
                      </div>  
                   </Col>
                </Row>
+               <hr className={homepage.line}/>
                <div>
                   <Row>
                      <Col md={3}>

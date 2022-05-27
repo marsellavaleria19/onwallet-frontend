@@ -6,7 +6,7 @@ import CButton from './CButton';
 
 const NavbarHomepage = ()=>{
    return(
-      <Navbar className={navbar.NavbarHomepage} expand="lg">
+      <Navbar className={navbar.NavbarHomepage} expand="lg" variant='dark'>
          <Container>
             <Navbar.Brand className={navbar.navbarBrand} href="#home">On-Wallet</Navbar.Brand>
             <Navbar.Toggle/>
