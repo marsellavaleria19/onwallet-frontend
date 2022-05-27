@@ -5,7 +5,7 @@ import Layout from '../component/Layout';
 import information from '../styles/information.module.scss';
 import profile from '../styles/profile.module.scss';
 import Image from 'next/image';
-import {FaPencilAlt} from 'react-icons/fa';
+import {FaPencilAlt,FaArrowRight} from 'react-icons/fa';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListPhoneUser } from '../redux/actions/phone';
@@ -105,9 +105,9 @@ const PersonalInformation= () =>{
                   </div>
                </div>
                <div className="text-center">
-                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/personal-information')}>Personal Information</CButton></div>
-                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/change-password')}>Change Password</CButton></div>
-                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/verify-pin')}>Change PIN</CButton></div>
+                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/personal-information')}><div className='d-flex justify-content-between align-items-center'>Personal Information <FaArrowRight className={`${profile.icon} me-4`}/></div></CButton></div>
+                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/change-password')}><div className='d-flex justify-content-between align-items-center'>Change Password<FaArrowRight className={`${profile.icon} me-4`}/></div></CButton></div>
+                  <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={()=>route.push('/profile/verify-pin')}><div className='d-flex justify-content-between align-items-center'>Change PIN <FaArrowRight className={`${profile.icon} me-4`}/></div></CButton></div>
                   <div><CButton className={`${profile.button} btn-primary mb-3`} onClick={handleLogout}>Logout</CButton></div>
                </div>
             </Container>
