@@ -32,6 +32,7 @@ const Layout = ({children})=>{
          dispatch(getListHistory(auth.token));
       }
    },[auth.token]);
+   
    return(
       <div>
          {auth.token!==null &&
@@ -47,7 +48,6 @@ const Layout = ({children})=>{
                      </Col>
                   </Row>
                </Container>
-             
                <Footer/>
             </> 
          }
