@@ -43,19 +43,7 @@ const PersonalInformation= () =>{
                         <div className="fs-5 fw-bold text-primary ms-3">Phone Number</div>
                         <div className="fs-5 text-primary ms-3">{auth.phone!==null ? auth.phone : '-'}</div>
                      </div>
-                     <Link href="/profile/manage-phone-number"><a className="fs-5 text-primar me-3">Manage</a></Link>
-                     {/* <Row>
-                                    <Col xs={6} md={9}>
-                                      
-                                    </Col>
-                                    <Col xs={6} md={2} className="me-auto">
-                                        <div>
-                                            <Link href="/profile/manage-phone-number"><a className="fs-5 text-primary">Manage</a></Link>
-                                        </div>
-                                       
-                                    </Col>
-                                </Row>   */}
-                               
+                     <Link href="/profile/manage-phone-number"><a className="fs-5 text-primary me-3">Manage</a></Link>
                   </CList>
                </div>
             </Container>
