@@ -21,6 +21,7 @@ import moment from 'moment';
 const Status= () =>{
    const {transaction,auth} = useSelector(state=>state);
    const router = useRouter();
+
    return (
       <Layout>          
          <div className={information.information}>
@@ -81,10 +82,10 @@ const Status= () =>{
                   <div className="text-end mb-3 me-3">
                      {
                         transaction.isError ? <CButton className={`${inputStyle.buttonTransaction} btn-primary`} onClick={()=>router.push('/transaction/confirmation')}>Try Again</CButton> :
-                           <>
-                              <CButton className={`${inputStyle.buttonTransaction} btn-primary me-2`} >Download PDF</CButton>
-                              <Link href="/home"><a className={`btn ${inputStyle.buttonTransaction} pt-3 btn-primary`} >Back to Home</a></Link>
-                           </>
+                           <div className='d-sm-flex justify-content-end'>
+                              <CButton className={`${inputStyle.buttonTransaction} me-2`} >Download PDF</CButton>
+                              <CButton className={inputStyle.buttonTransaction} onClick={()=>router.push('/home')}>Back to Home</CButton>
+                           </div>
                      }   
                   </div>
                </div>
