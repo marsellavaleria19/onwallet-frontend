@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import CModalLoading from '../../component/CModalLoading';
 import CModalError from '../../component/CModalError';
+import input from '../../styles/input.module.scss';
 import CModalSuccess from '../../component/CModalSuccess';
 // import NavbarComponent from "../component/NavbarComponent";
 
@@ -31,20 +32,32 @@ const VerifyPin= () =>{
    var [messageSuccess,setMessageSuccess] = useState('');
 
    useEffect(()=>{
-      setShowModalLoading(changePin.isLoading);
-      if(changePin.isLoading==false && control==true){
-         if(changePin.isError){
-            messageError = changePin.errMessage;
-            setMessageError(messageError);
-            console.log(messageError);
-            setShowModalError(true);
-         }else{
-            dispatch(saveOldPin(pin));
-            route.push('/profile/change-pin');
-         }
-         setControl(false);
+      if(auth.token!==null){
+         route.replace('/profile/verify-pin');
+      }else{
+         route.replace('/');
       }
-     
+   },[]);
+
+   useEffect(()=>{
+      if(auth.token!==null){
+         setShowModalLoading(changePin.isLoading);
+         if(changePin.isLoading==false && control==true){
+            if(changePin.isError){
+               messageError = changePin.errMessage;
+               setMessageError(messageError);
+               console.log(messageError);
+               setShowModalError(true);
+            }else{
+               dispatch(saveOldPin(pin));
+               route.push('/profile/change-pin');
+            }
+            setControl(false);
+         }
+         route.replace('/profile/verify-pin');
+      }else{
+         route.replace('/');
+      }
    },[changePin.isLoading]);
 
    const handlePin = (event)=>{
@@ -59,7 +72,7 @@ const VerifyPin= () =>{
             <Container className="pt-5">
                <div className="fs-5 mb-3 ms-4 fw-bold text-primary">Change Pin</div>
                <p className="ms-4 text-primary">Enter your current 6 digits On-wallet PIN below to continue to the next steps.</p>
-               <Form className="text-center mt-5" onSubmit={handlePin}>
+               <Form className={`${input.form} text-center`} onSubmit={handlePin}>
                   <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
                   {
                      messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
@@ -78,14 +91,12 @@ const VerifyPin= () =>{
                         setPin(value);
                         setComplete(true);
                      }}
+                     inputStyle={{border:'1px solid #F73D93',borderRadius:'8px',color:'#F73D93',marginRight:'10px',marginBottom:'10px'}}
                      autoSelect={true}
                      regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                   />
                   <div className="mt-5">
-                     <CButton disabled={!complete} type="submit">Continue</CButton>
-                     {/* {
-                                    !complete ? <CButton disabled>Change Pin</CButton> : <CButton type="submit">Continue</CButton>
-                                } */}
+                     <CButton disabled={!complete} className={input.button} type="submit">Continue</CButton>
                   </div>
                </Form>
             </Container>

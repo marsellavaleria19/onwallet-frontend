@@ -12,10 +12,19 @@ $third : #FFDDEE !default;
     width : 100%;
     min-height: 830px;
     border: 1px solid $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuCanvas{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 .menuItem{
-   margin : 70px 40px;
+   margin-top: 70px;
    list-style: none;
 }
 
@@ -42,21 +51,7 @@ $third : #FFDDEE !default;
 }
 
 .layoutButtonLogout{
-   position: absolute;
-   bottom: 50px;
-   margin-bottom: 40px;
- 
-}
-
-.iconMenu{
    color: $primary;
-   font-size: 18px;
-}
-
-.iconMenu:hover{
-   color: $primary;
-   font-size: 18px;
-   font-weight: 700;
 }
 
 .buttonLogout{

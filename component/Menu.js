@@ -39,29 +39,30 @@ const Menu = ()=>{
    };
 
    return(
-      <div className='position-relative'>
+      <div>
          <div className={`${menu.menu}`}>
-            <ul className={`${menu.menuItem}`}>
-               {
-                  listMenu.map(item => {
-                     const Icon = item.icon;
-                     return (
-                        <li key={item.menu}>
-                           <Link href={item.link}>
-                              <a className={activeMenu===item.link?'active':''}>
-                                 <Icon className={`${menu.iconMenu} me-3`} />
-                                 {item.menu}
-                              </a>
-                           </Link>
-                        </li>
-                     );
-                  })}
-               <div className={`${menu.layoutButtonLogout}`}>
-                  <FiLogOut className={menu.iconMenu}/>
-                  <CButton onClick={handleLogout} className={menu.buttonLogout}>Logout</CButton>
-               </div>
-            </ul>
-            
+            <div className='me-5 ms-5'>
+               <ul className={`${menu.menuItem}`}>
+                  {
+                     listMenu.map(item => {
+                        const Icon = item.icon;
+                        return (
+                           <li key={item.menu}>
+                              <Link href={item.link}>
+                                 <a className={activeMenu===item.link?'active':''}>
+                                    <Icon className={`${menu.iconMenu} me-3`} />
+                                    {item.menu}
+                                 </a>
+                              </Link>
+                           </li>
+                        );
+                     })}
+               </ul>
+            </div>
+            <div className={`${menu.layoutButtonLogout} me-auto ms-auto mb-5`}>
+               <FiLogOut className={menu.iconMenu}/>
+               <CButton onClick={handleLogout} className={menu.buttonLogout}>Logout</CButton>
+            </div>
          </div>
       </div>
       

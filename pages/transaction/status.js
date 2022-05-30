@@ -14,6 +14,7 @@ import CList from '../../component/CList';
 import inputStyle from '../../styles/input.module.scss';
 import { useRouter } from 'next/router';
 import moment from 'moment';
+import { useEffect } from 'react';
 
 // import transaction from "../../redux/reducers/transaction";
 // import NavbarComponent from "../component/NavbarComponent";
@@ -22,6 +23,14 @@ const Status= () =>{
    const {transaction,auth} = useSelector(state=>state);
    const router = useRouter();
 
+   useEffect(()=>{
+      if(auth.token!==null){
+         router.replace('/transaction/status');
+      }else{
+         router.replace('/');
+      }
+   },[]);
+   
    return (
       <Layout>          
          <div className={information.information}>

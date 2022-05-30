@@ -1,22 +1,22 @@
 // import { Button } from "bootstrap";
 import { Col, Container, Row } from 'react-bootstrap';
-import CButton from '../component/CButton';
-import Layout from '../component/Layout';
-import information from '../styles/information.module.scss';
-import profile from '../styles/profile.module.scss';
+import CButton from '../../component/CButton';
+import Layout from '../../component/Layout';
+import information from '../../styles/information.module.scss';
+import profile from '../../styles/profile.module.scss';
 import Image from 'next/image';
 import {FaPencilAlt,FaArrowRight} from 'react-icons/fa';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { getListPhoneUser } from '../redux/actions/phone';
+import { getListPhoneUser } from '../../redux/actions/phone';
 import { useEffect,useState } from 'react';
 import {AiOutlineArrowRight} from 'react-icons/ai';
 import { useRouter } from 'next/router';
-import imageProfile from '../public/images/profile.png';
-import { updateDataUser } from '../redux/actions/auth';
-import CModalError from '../component/CModalError';
-import CModalLoading from '../component/CModalLoading';
-import CModalSuccess from '../component/CModalSuccess';
+import imageProfile from '../../public/images/profile.png';
+import { updateDataUser } from '../../redux/actions/auth';
+import CModalError from '../../component/CModalError';
+import CModalLoading from '../../component/CModalLoading';
+import CModalSuccess from '../../component/CModalSuccess';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const PersonalInformation= () =>{
@@ -35,10 +35,16 @@ const PersonalInformation= () =>{
    var [messageSuccess,setMessageSuccess] = useState('');
 
    useEffect(()=>{
-      if(auth.user.picture!==null){
-         setImage(auth.user.picture);
+      if(auth.token){
+         route.replace('/profile');
+         if(auth.user.picture!==null){
+            setImage(auth.user.picture);
+         }
+         dispatch(getListPhoneUser(auth.token));
+      }else{
+         route.replace('/');
       }
-      dispatch(getListPhoneUser(auth.token));
+      
    },[]);
 
    

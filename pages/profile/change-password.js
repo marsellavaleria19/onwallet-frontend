@@ -15,6 +15,7 @@ import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
 import CModalSuccess from '../../component/CModalSuccess';
 import { validation } from '../../helpers/validation';
+import {useRouter} from 'next/router';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const ChangePassword= () =>{
@@ -31,21 +32,37 @@ const ChangePassword= () =>{
    var [messageError,setMessageError] = useState('');
    var [messageSuccess,setMessageSuccess] = useState('');
    const [control,setControl] = useState(false);
+   const route = useRouter();
 
    useEffect(()=>{
-      setShowModalLoading(changePassword.isLoading);
-      if(changePassword.isLoading==false && control==true){
-         if(changePassword.isError){
-            messageError = changePassword.errMessage;
-            setMessageError(messageError);
-            setShowModalError(true);
-         }else{
-            messageSuccess = changePassword.message;
-            setMessageSuccess(messageSuccess);
-            setShowModalSuccess(true);
-         }
-         setControl(false);
+      if(auth.token!==null){
+         route.replace('/profile/change-password');
+      }else{
+         route.replace('/');
       }
+    
+   },[]);
+
+   useEffect(()=>{
+      if(auth.token!==null){
+         setShowModalLoading(changePassword.isLoading);
+         if(changePassword.isLoading==false && control==true){
+            if(changePassword.isError){
+               messageError = changePassword.errMessage;
+               setMessageError(messageError);
+               setShowModalError(true);
+            }else{
+               messageSuccess = changePassword.message;
+               setMessageSuccess(messageSuccess);
+               setShowModalSuccess(true);
+            }
+            setControl(false);
+         }
+         route.replace('/profile/change-password');
+      }else{
+         route.replace('/');
+      }
+    
    },[changePassword.isLoading]);
 
    //  useEffect(()=>{
@@ -87,7 +104,7 @@ const ChangePassword= () =>{
             <Container className="pt-5">
                <div className="fs-5 mb-3 ms-4 fw-bold text-primary">Change Password</div>
                <p className="ms-4 text-primary">You must enter your current password and then type your new password twice.</p>
-               <Form className={`${input.formPassword} pe-5 ps-5`} onSubmit={handlePassword}>
+               <Form className={input.form} onSubmit={handlePassword}>
                   <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
                   {
                      messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 
@@ -110,8 +127,8 @@ const ChangePassword= () =>{
                      <Input type="password" name="repeatPassword" className={input.textLoginSignup} placeholder="Repeat New Password "/>
                   </div>
                   {error!==null && error['repeat password'] ? <div className={input.error}>{error['repeat password']}</div> : '' }
-                  <div>
-                     <CButton className={`${input.buttonPassword}`} type="submit">Change Password</CButton>
+                  <div className='mt-5'>
+                     <CButton className={input.button} type="submit">Change Password</CButton>
                   </div>
                </Form>
             </Container>

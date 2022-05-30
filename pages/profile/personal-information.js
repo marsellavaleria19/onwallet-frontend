@@ -8,10 +8,19 @@ import Input from '../../component/Input';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import CList from '../../component/CList';
+import useRouter from 'next/router';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const PersonalInformation= () =>{
    const {auth,phone} = useSelector(state=>state);
+   const route = useRouter();
+   useEffect(()=>{
+      if(auth.token!==null){
+         route.replace('/profile/manage-phone-number');
+      }else{
+         route.replace('/');
+      }
+   },[]);
 
    return (
       <Layout>          

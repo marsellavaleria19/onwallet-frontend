@@ -13,6 +13,7 @@ import historyStyle from '../styles/history.module.scss';
 import CButton from '../component/CButton';
 import input from '../styles/input.module.scss';
 import {FaAngleDoubleDown,FaSearch} from 'react-icons/fa';
+import {useRouter} from 'next/router';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const History = () => {
@@ -28,23 +29,30 @@ const History = () => {
    const [limit,setLimit] = useState(5);
    const [defaultLimit,setDefaultLimit] = useState(5);
    var [next,setNext] = useState(null);
+   const route = useRouter();
 
    useEffect(()=>{
-      var result  = history.listHistory.map((item)=>{
-         if(item.typeId==3 && item.userId==auth.user.id){
-            item = {...item,typeMutation:'-',user:auth.user};
-         }
-         if(item.typeId==3 && item.anotherUserId==auth.user.id){
-            var anotherUser = user.listUser.filter((itemUser)=>itemUser.id==item.userId)[0];
-            item = {...item,typeMutation:'+',user:anotherUser};
-         }
-         if(item.typeId==1){
-            item = {...item,typeMutation:'+',user:auth.user};
-         }
-         return item;
-      });
-      setListHistory(result);
-      seListAllHistory(result);
+      if(auth.token!==null){
+         var result  = history.listHistory.map((item)=>{
+            if(item.typeId==3 && item.userId==auth.user.id){
+               item = {...item,typeMutation:'-',user:auth.user};
+            }
+            if(item.typeId==3 && item.anotherUserId==auth.user.id){
+               var anotherUser = user.listUser.filter((itemUser)=>itemUser.id==item.userId)[0];
+               item = {...item,typeMutation:'+',user:anotherUser};
+            }
+            if(item.typeId==1){
+               item = {...item,typeMutation:'+',user:auth.user};
+            }
+            return item;
+         });
+         setListHistory(result);
+         seListAllHistory(result);
+         route.replace('/history');
+      }else{
+         route.replace('/');
+      }
+      
    },[]);
 
    const filterHandle = (event)=>{

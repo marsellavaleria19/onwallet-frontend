@@ -36,20 +36,36 @@ const Topup= () =>{
    var [messageSuccess,setMessageSuccess] = useState('');
    const [control,setControl] = useState(false);
     
+       
    useEffect(()=>{
-      setShowModalLoading(transaction.isLoading);
-      if(transaction.isLoading==false && control==true){
-         if(transaction.isError){
-            messageError = transaction.errMessage;
-            setMessageError(messageError);
-            setShowModalError(true);
-         }else{
-            messageSuccess = transaction.message;
-            setMessageSuccess(messageSuccess);
-            setShowModalSuccess(true);
-         }
-         setControl(false);
+      if(auth.token!==null){
+         route.replace('/transaction/topup');
+      }else{
+         route.replace('/');
       }
+   
+   },[]);
+
+   useEffect(()=>{
+      if(auth.token!==null){
+         setShowModalLoading(transaction.isLoading);
+         if(transaction.isLoading==false && control==true){
+            if(transaction.isError){
+               messageError = transaction.errMessage;
+               setMessageError(messageError);
+               setShowModalError(true);
+            }else{
+               messageSuccess = transaction.message;
+               setMessageSuccess(messageSuccess);
+               setShowModalSuccess(true);
+            }
+            setControl(false);
+         }
+         route.replace('/transaction/topup');
+      }else{
+         route.replace('/');
+      }
+   
    },[transaction.isLoading]);
 
    const handleTopup = (event)=>{
@@ -107,7 +123,7 @@ const Topup= () =>{
                   {
                      messageSuccess!=='' && <CModalSuccess message={messageSuccess} show={showModalSuccess} close={handleCloseSuccess} button="Go to home" functionHandle={goToHomepage}/>
                   }
-                  <Form className="text-center mt-5 ms-3 me-3" onSubmit={handleTopup}>
+                  <Form className={`${input.form} text-center`}  onSubmit={handleTopup}>
                      <div className={`${input.inputContainer} mt-5 mb-5`}>
                         <Input type="text" name="amount" className={input.textLoginSignup} placeholder="Amount"/>
                      </div>

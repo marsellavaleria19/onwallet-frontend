@@ -14,6 +14,7 @@ import CModalConfirmation from '../../component/CModalConfirmation';
 import CModalError from '../../component/CModalError';
 import CModalLoading from '../../component/CModalLoading';
 import CModalSuccess from '../../component/CModalSuccess';
+import input from '../../styles/input.module.scss';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const ManagePhoneNumber= ({getListPhoneUser,deletePhoneNumber}) =>{
@@ -38,7 +39,13 @@ const ManagePhoneNumber= ({getListPhoneUser,deletePhoneNumber}) =>{
    var [messageSuccess,setMessageSuccess] = useState('');
 
    useEffect(()=>{
-      getListPhoneUser(auth.token);
+      if(auth.token!==null){
+         getListPhoneUser(auth.token);
+         route.replace('/profile/manage-phone-number');
+      }else{
+         route.replace('/');
+      }
+      
    },[]);
 
     
@@ -87,7 +94,7 @@ const ManagePhoneNumber= ({getListPhoneUser,deletePhoneNumber}) =>{
                <div className="ms-5 me-5">
                   <div className="fs-5 mb-3 fw-bold text-primary">Manage Phone Number</div>
                   <p className="text-primary">You can only delete the phone number and then you must add another phone number.</p>
-                  {phone !==null && phone.listPhone && phone.listPhone.map((item)=>{
+                  {phone !==null && phone.listPhone &&phone.listPhone.sort((phone1,phone2)=>phone2.id<phone1.id ? -1 : 0).map((item)=>{
                     
                      return(
                         <Row className={`${information.list} mt-5 mb-3`} key={item.id}>
@@ -108,7 +115,7 @@ const ManagePhoneNumber= ({getListPhoneUser,deletePhoneNumber}) =>{
                
                   }
                   <CModalConfirmation title={'Delete'} show={show} message={'Do you really want to delete this data? This data cannot restore.'} functionHandle={()=>handleDeletePhone(deleteId)} close={handleClose} button={'Delete'}/>  
-                  <CButton className="btn-primary" onClick={()=>route.push('/profile/add-phone-number')}>Add phone number</CButton>
+                  <CButton className={input.button} onClick={()=>route.push('/profile/add-phone-number')}>Add phone number</CButton>
                </div>
             </Container>
          </div>          
