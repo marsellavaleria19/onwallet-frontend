@@ -1,0 +1,263 @@
+// .header {
+//     background-color: green;
+//     height: 700px;
+//     width: 100%;
+// }
+
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
+
+.header {
+    background-image: url(../public/images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1000px;
+    width:100%;
+}
+
+.titleHeader{
+    font-size:3.5vw;;
+    margin-top: 244px;
+    width : 600px;
+}
+
+.imgHeader{
+    margin-top: 244px;
+    width:100%;
+    height : 100%;
+}
+
+.textHeader{
+    font-size: 18px;
+}
+
+.button{
+    background-color: white;
+    color : $primary;
+    width: 173px;
+    height: 57px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: $primary;
+    color : white;
+    width: 173px;
+    height: 57px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.title{
+    font-size: 3vw;
+    font-weight: 700;
+    font-family: $font-family;
+    color: $primary;
+}
+
+.icon{
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    border-radius: 40px;
+    background-color: $primary;
+    color: $secondary;
+    align-items: center;
+}
+
+.sectionFeatureWallet {
+   background-color: $third;
+   height: 100%;
+   width: 100%;
+}
+
+.sectionAboutWallet {
+    background-color: $third;
+    height: 100%;
+ }
+
+.balance {
+    background-color: $third;
+    height: 100%;
+    width : 720px;
+    border-radius: 30px;
+    align-items: center;
+ }
+ 
+ .textBalance{
+   color: $primary;
+   font-size: 4vw;
+   font-weight: 900;
+ }
+
+.description{
+    font-size: 4vw;
+    color: $primary;
+    font-weight: 700;
+}
+
+.detailFeature{
+    height: 100%;
+    color: $secondary;
+    border: 1px solid $primary;
+    border-radius: 20px;
+    width : 100%;
+}
+
+.arrow{
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    border-radius: 40px;
+    background-color: $secondary;
+    color: $primary;
+    border: 1.5px solid $primary;
+}
+
+.testimony{
+    background-color: $secondary;
+    border: 1.5px solid $primary;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.footer{
+    background-color: $primary;
+    color: $secondary;
+    height: 438px;
+    font-size: 18px;  
+}
+
+.line {
+   border: 1px solid $secondary;
+}
+
+.imgFeature{
+   width:100%;
+   height:100%;
+   position:relative;
+}
+
+.buttonCarousel {
+   align-items: center;
+    background-color: transparent;
+    border: none;
+   //  height: 50px;
+   //  width: 50px;
+   //  margin-top: auto;
+   //  margin-bottom: auto;
+}
+
+   .iconCarousel{
+   color: $primary;
+    font-weight: 700;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid $primary;
+    border-radius: 50%;
+   }
+
+.buttonCarousel:hover {
+   align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.iconCarousel:hover{
+   color: $secondary;
+    font-weight: 700;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: $primary;
+    border-radius: 50%;
+   }
+
+.buttonCarousel:disabled {
+   align-items: center;
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   opacity: 0.4;
+}
+
+.rec-carousel-item:focus {
+    outline: none;
+    box-shadow: inset 0 0 1px 1px lightgrey;
+}
+
+@media(max-width:500px) {
+   .titleHeader{
+      font-size: 15vw;
+   }
+   .balance{
+      width: 100%;
+   }
+   .textBalance{
+      font-size: 11.5vw;
+      
+   }
+   .description{
+      font-size: 15vw;
+   }
+   .title{
+      font-size: 6vw;
+      font-weight: 700;
+      font-family: $font-family;
+  }
+  .detailFeature{
+   height: 100%;
+}
+}
+
+@media(min-width:501px) and (max-width:756px) {
+    .titleHeader{
+       font-size: 10vw;
+    }
+    .textBalance{
+      font-size: 8vw;  
+   }
+   .description{
+      font-size: 10vw;
+   }
+   .title{
+      font-size: 6vw;
+      font-weight: 700;
+      font-family: $font-family;
+  }
+ }
+
+@media(min-width:757px) and (max-width:992px) {
+    .titleHeader,.textHeader{
+        width: 100%;
+    }
+    .titleHeader{
+      font-size: 6vw;
+   }
+    .textBalance{
+      font-size: 6vw;  
+   }
+   .description{
+      font-size: 6vw;
+   }
+   .title{
+      font-size: 6vw;
+      font-weight: 700;
+      font-family: $font-family;
+  }
+}
+
+@media(min-width:1400px){
+   .imgFeature{
+      width:90%;
+      height:100%;
+      position:relative;
+   }
+}
+

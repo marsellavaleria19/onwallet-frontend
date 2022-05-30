@@ -1,0 +1,38 @@
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
+
+.modalHeader{
+    background-color: $primary;
+    color: white;
+}
+
+.modalBody{
+   background-color: $secondary;
+   color: $primary;
+}
+
+.modalIcon{
+   background-color: $secondary;
+   color: $primary;
+   font-size: 100px;
+}
+
+.buttonModal {
+   height:40px;
+   width: 100%;
+   border-radius: 12px;
+   font-weight: 700;
+   color: $secondary;
+}
+
+.buttonModal:hover {
+  background-color: $secondary;
+  color : $primary;
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}

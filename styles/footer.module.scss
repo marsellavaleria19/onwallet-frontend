@@ -1,0 +1,20 @@
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
+
+.footer{
+    background-color: $primary;
+    height: 438px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.footerHome{
+   background-color: $primary;
+   height: 68px;
+   font-size: 16px;
+   display: flex;
+   align-items: center;
+}

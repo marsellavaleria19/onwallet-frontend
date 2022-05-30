@@ -1,0 +1,64 @@
+// $primary: #6E3CBC !default;
+$primary : #F73D93 !default;
+// $secondary: #9AB3F5 !default;
+$secondary : #FFFFFF !default;
+$font-family : 'Nunito Sans';
+   
+   .accordionStyle{
+      background-color: $secondary;
+      border: 1px solid $primary;
+   }
+
+   .accordionHeader button{
+      background-color: $secondary;
+      border: 1px solid $primary;
+      color: $primary;
+   }
+
+   .accordionHeader button::after{
+     color: #F73D93;
+   }
+
+   .selectForm{
+      border: 1px solid $primary;
+      color: $primary;
+      background-image: unset;
+   }
+
+   .iconAccordion {
+      right: 20px;
+      font-size: 24px;
+      color: $primary;
+      position: absolute;
+      top:15px;
+  }
+   .iconSelectForm {
+      right: 10px;
+      font-size: 30px;
+      font-weight: 900;
+      color: $primary;
+      position: absolute;
+      top:5px;
+  }
+   // .accordionItem {
+   //       background-color: $primary;
+   //       border: 1px solid $primary;
+   //       width : 100%; 
+   //       height:40px;
+   //   }
+     
+   //   .accordionButton {
+   //       background-color: transparent;
+   //       height: 75px;
+   //       border: none;
+   //       font-size: 24px;
+   //       font-weight: 400;
+   //   }
+     
+   //   .accordion input[type="date"] {
+   //       background-color: transparent;
+   //       border: 1px solid var(--primary);
+   //       border-radius: 10px;
+   //       color: var(--primary);
+   //       height: 75px;
+   //   }

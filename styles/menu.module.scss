@@ -1,0 +1,70 @@
+
+// $primary: #6E3CBC !default;
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
+
+.menu{
+    background-color: $secondary;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    width : 100%;
+    min-height: 830px;
+    border: 1px solid $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuCanvas{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.menuItem{
+   margin-top: 70px;
+   list-style: none;
+}
+
+.menuItem li{
+    font-size: 18px;
+    margin-top: 52px;
+}
+
+
+.menuItem li:hover{
+    font-size: 18px;
+    padding-left: 45px;
+    font-weight: 600;
+}
+
+.menuItem li a{
+    font-size: 18px;
+    margin-top: 52px;
+}
+
+.menuItem li a.active{
+    font-weight: 700;
+    border-left: 2px solid $primary;
+}
+
+.layoutButtonLogout{
+   color: $primary;
+}
+
+.buttonLogout{
+   font-size: 18px;
+   background-color: transparent;
+   color: #F73D93;
+   border: none;
+}
+
+.buttonLogout:hover{
+   font-size: 18px;
+   background-color: transparent;
+   color: #F73D93;
+   font-weight: 700;
+   border: none;
+}

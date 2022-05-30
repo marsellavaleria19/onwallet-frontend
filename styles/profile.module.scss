@@ -1,0 +1,45 @@
+$font-family : 'Nunito Sans';
+$primary : #F73D93 !default;
+$secondary: #FFFFFF !default;
+$third : #FFDDEE !default;
+
+.button{
+    height : 64px;
+    width : 433px;
+    border-radius: 20px;
+    color:$secondary;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.button:hover{
+   height : 64px;
+   width : 433px;
+   border-radius: 20px;
+   border: 1px solid $primary;
+   color:$primary;
+   background-color: $secondary;
+   font-size: 16px;
+   font-weight: 700;
+   text-align: left;
+   padding-left: 30px;
+   cursor: pointer;
+}
+
+.buttonEdit{
+   background-color: transparent;
+   border:none;
+   color: $primary;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+@media(max-width:500px) {
+    .button{
+        width : 100%;
+    }
+}

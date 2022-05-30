@@ -1,0 +1,87 @@
+// $primary: #6E3CBC !default;
+// $primary : #92B4EC!default;
+// $primary: #6E3CBC !default;
+$primary : #F73D93 !default;
+// $secondary: #9AB3F5 !default;
+$secondary : #FFFFFF !default;
+$font-family : 'Nunito Sans';
+
+.information{
+    background-color: $secondary;
+    border: 1px solid $primary;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    width: 100%;
+    height : 830px;
+    overflow-y: auto;
+}
+
+.list{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height : 110px;
+    align-items: center;
+    font-family: $font-family;
+    border:1px solid $primary;
+    cursor: pointer;
+    width: 100%;
+}
+
+.formSearch {
+   width: 100%;
+   height: 54px;
+   background-color: transparent;
+   border: 1px solid $primary;
+   border-radius: 10px;
+   font-family: 'Mulish', serif;
+   font-size: 16px;
+   color: $primary;
+   padding-left: 60px;
+}
+
+.formSearch::placeholder{
+   color:$primary
+}
+
+.formSearch:focus {
+   outline: none;
+   background-color: transparent;
+   box-shadow: unset;
+   border: 1px solid $primary;
+   color: $primary;
+}
+
+.btnSearch {
+   left:5px;
+   width: 54px;
+   height: 54px;
+   background-color: transparent;
+   border: none;
+}
+
+.btnSearch svg {
+   font-size: 20px;
+   color: $primary;
+}
+
+.btnNext {
+   background-color: transparent;
+   color: $primary;
+   font-size: 24px;
+   border:  none;
+}
+
+.btnNext:hover {
+   font-weight: 700;
+   background-color: transparent;
+   color: $primary;
+   font-size: 24px;
+   border:  none;
+}
+
+.btnNext:active {
+   background-color: transparent;
+   color: $primary;
+   font-size: 24px;
+   border:  none;
+}
