@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import { Button } from "bootstrap";
 import {Form,Alert} from 'react-bootstrap';
 import CButton from '../component/CButton';
@@ -38,7 +39,7 @@ const ForgotPassword = () =>{
    useEffect(()=>{
       if(forgotPassword.isLoading==false && control==true){
          if(forgotPassword.isError){
-            messageError= forgotPassword.errMessage;
+            messageError = forgotPassword.errMessage;
             setMessageError(messageError);
             setShowModalError(true);
          }else{
