@@ -64,7 +64,7 @@ npm install
     <img src="https://user-images.githubusercontent.com/44119106/171023730-22ca6e3c-4c31-4e12-b7fe-e87bea90dda2.png" width="415"/>
     <img src="https://user-images.githubusercontent.com/44119106/171017551-8f76c47b-c4bf-49f5-98cb-dc9bbaf92461.png" width="415"/>
     <img src="https://user-images.githubusercontent.com/44119106/171023200-cb1557a1-e2f6-4b0a-bb14-01288f7f0703.png" width="415"/>
-    <img src="https://user-images.githubusercontent.com/44119106/171023409-ef8bbfdb-f157-489d-99e6-e264c761644d.png" width="415"/>
+    <img src="https://user-images.githubusercontent.com/44119106/171025466-5a7364e7-0508-4835-8d45-c73c52e369b6.png" width="415"/>
     <br/>
   </span>
 <br>
