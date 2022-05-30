@@ -101,10 +101,7 @@ const NavbarComponent = ()=>{
                               <CButton onClick={handleLogout} className={menu.buttonLogout}>Logout</CButton>
                            </div>
                         </ul>
-                       
                      </div>
-                    
-                   
                   </div>  
                </Offcanvas.Body>
             </Offcanvas>
