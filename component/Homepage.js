@@ -28,7 +28,7 @@ const Homepage = ()=> {
                   <h1 className={`${homepage.titleHeader} text-center fw-bolder text-white`}>Awesome App For Saving Time.</h1>
                </div>
                <div className={`mt-5 text-center fs-4 ${homepage.textHeader} text-white`}>
-              We bring you a mobile app for banking problems that oftenly wasting much of your times.
+                  We bring you a mobile app for banking problems that oftenly wasting much of your times.
                </div>
                <div className='mt-5 text-center'>
                   <CButton className={homepage.button}>Try It Free</CButton>
