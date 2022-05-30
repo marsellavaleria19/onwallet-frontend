@@ -1,8 +1,9 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal,Row,Col } from 'react-bootstrap';
 import CButton from './CButton';
 import {RiErrorWarningFill} from 'react-icons/ri';
 import modal from '../styles/modal.module.scss';
+import input from '../styles/input.module.scss';
 
 const CModalConfirmation = ({title,message,show,close,button,functionHandle}) => {
 
@@ -19,11 +20,11 @@ const CModalConfirmation = ({title,message,show,close,button,functionHandle}) =>
                   <div className='fs-1 pps fw-bold text-pallet-1'>Are you sure?</div>
                   <div className='fs-5 pps  text-pallet-1'>{message}</div>
                </div>
+               <div className='d-sm-flex justify-content-sm-between mt-5'>
+                  <CButton className={`${input.buttonCancel} me-2`} onClick={close}>Close</CButton>
+                  <CButton className={input.button} onClick={functionHandle}>{button}</CButton>
+               </div>
             </Modal.Body>
-            <Modal.Footer className={modal.modalBody}>
-               <CButton btnVarian={'button-delete-item'} onClick={close}>Close</CButton>
-               <CButton btnVarian={'button-filled fw-bold'} onClick={functionHandle}>{button}</CButton>
-            </Modal.Footer>
          </Modal>
       </>
    );
