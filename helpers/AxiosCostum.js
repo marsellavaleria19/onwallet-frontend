@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-const {NEXT_PUBLIC_APP_URL} = process.env;
-console.log(NEXT_PUBLIC_APP_URL);
-
 const AxiosCostum = (token) =>{
    const headers = {};
    if(token){
@@ -10,7 +7,7 @@ const AxiosCostum = (token) =>{
    }
 
    return axios.create({
-      baseURL : NEXT_PUBLIC_APP_URL,
+      baseURL : process.env.NEXT_PUBLIC_APP_URL,
       headers
    });
 };
