@@ -45,6 +45,7 @@ const PersonalInformation= () =>{
          route.replace('/');
       }
       
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    },[]);
 
    

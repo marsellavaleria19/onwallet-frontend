@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import { Button } from "bootstrap";
 import { Col, Container, Row,Form,Alert } from 'react-bootstrap';
 import CButton from '../../component/CButton';
