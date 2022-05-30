@@ -7,7 +7,7 @@ import information from '../../styles/information.module.scss';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import CModal from '../../component/CModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PinInput from 'react-pin-input';
 import { transactionProcess } from '../../redux/actions/transaction';
 import { useRouter } from 'next/router';
@@ -23,6 +23,14 @@ const ConfirmationTransaction= () =>{
    const handleClose = () => setShow(false);
    const dispatch = useDispatch();
    const router = useRouter();
+   
+   useEffect(()=>{
+      if(auth.token!==null){
+         router.replace('/transaction/confirmation');
+      }else{
+         router.replace('/');
+      }
+   },[]);
    
    const handleConfirmationTransaction = (event)=>{
       event.preventDefault();

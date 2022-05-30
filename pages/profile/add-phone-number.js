@@ -32,19 +32,33 @@ const AddPhoneNumber= () =>{
    const route = useRouter();
    const dispatch = useDispatch();
 
+   
    useEffect(()=>{
-      setShowModalLoading(phone.isLoading);
-      if(phone.isLoading==false && control==true){
-         if(phone.isError){
-            messageError = phone.errMessage;
-            setMessageError(messageError);
-            setShowModalError(true);
-         }else{
-            messageSuccess = phone.message;
-            setMessageSuccess(messageSuccess);
-            setShowModalSuccess(true);
+      if(auth.token!==null){
+         route.replace('/profile/add-phone-number');
+      }else{
+         route.replace('/');
+      }
+   },[]);
+
+   useEffect(()=>{
+      if(auth.token!==null){
+         setShowModalLoading(phone.isLoading);
+         if(phone.isLoading==false && control==true){
+            if(phone.isError){
+               messageError = phone.errMessage;
+               setMessageError(messageError);
+               setShowModalError(true);
+            }else{
+               messageSuccess = phone.message;
+               setMessageSuccess(messageSuccess);
+               setShowModalSuccess(true);
+            }
+            setControl(false);
          }
-         setControl(false);
+         route.replace('/profile/add-phone-number');
+      }else{
+         route.replace('/');
       }
    },[phone.isLoading]);
 
@@ -80,7 +94,7 @@ const AddPhoneNumber= () =>{
                <div className="ms-5 me-5">
                   <div className="fs-5 mb-3 fw-bold text-primary mt-5">Add Phone Number</div>
                   <p className="text-primary">Add at least one phone number for the transfer ID so you can start transfering your money to another user.</p>
-                  <Form className="text-center mt-5" onSubmit={handlePhoneNumber}>
+                  <Form className={`${input.form}`}  onSubmit={handlePhoneNumber}>
                      <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
                      {
                         messageError!=='' && <CModalError message={messageError} show={showModalError} close={handleCloseError}/> 

@@ -26,8 +26,13 @@ const Receiver = () => {
    var [next,setNext] = useState(null);
 
    useEffect(()=>{
-      dispatch(getAllDataUser(auth.token));
-      setListReceiver(user.listUser);
+      if(auth.token!==null){
+         dispatch(getAllDataUser(auth.token));
+         setListReceiver(user.listUser);
+         route.replace('/transaction/receiver');
+      }else{
+         route.replace('/');
+      }
    },[]);
 
    const handleReceiver = (item,phone=null)=>{
@@ -97,24 +102,13 @@ const Receiver = () => {
                                              <div className="fs-5 text-primary fw-bold">{item.fullName}</div>
                                              <div className="fs-6 text-primary">-</div>
                                           </div>
-                                            
                                        </div>
-                                        
-                                 //       <Row className={`${information.list} mt-3 mb-3 ms-2 me-2`} key={item.id} onClick={()=>handleReceiver(item)}>
-                                 //       <Col xs={2}>
-                                 //             <Image src={item.picture===null || item.picture=="undefined" ? "/images/profile.png" : item.picture} width={50} height={50}/>
-                                 //         </Col>
-                                 //       <Col xs={5}>
-                                 //           <div className="fs-5 text-primary">{item.fullName}</div>
-                                 //           <div className="fs-6 text-primary">-</div>
-                                 //       </Col>
-                                 //   </Row>
                                  }
                               </>
                            );
                         }): <CNotFound />
                      }
-                     {next < listReceiver.length-1 ? <div className='text-center mt-5 mb-5'>
+                     {listReceiver.length>limit && next < listReceiver.length-1 ? <div className='text-center mt-5 mb-5'>
                         <CButton onClick={()=>pagination(page+1)} className={information.btnNext}>Load more <FaAngleDoubleDown/></CButton>
                      </div> :''
                      }

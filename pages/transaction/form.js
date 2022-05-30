@@ -25,6 +25,15 @@ const InputTransfer= () =>{
    const [amount,setAmount] = useState(0);
    const dispatch = useDispatch();
     
+      
+   useEffect(()=>{
+      if(auth.token!==null){
+         route.replace('/transaction/form');
+      }else{
+         route.replace('/');
+      }
+   },[]);
+
    const handleTransaction = (event)=>{
       event.preventDefault();
       const data = {amount:amount.toString()};

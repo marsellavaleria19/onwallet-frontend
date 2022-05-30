@@ -12,6 +12,15 @@ import { useSelector } from 'react-redux';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const InputTransfer= () =>{
+      
+   // useEffect(()=>{
+   //    if(auth.token!==null){
+   //       router.replace('/transaction/detail-transfer-money');
+   //    }else{
+   //       router.replace('/');
+   //    }
+   // },[]);
+
    return (
       <Layout>          
          <div className={information.information}>
