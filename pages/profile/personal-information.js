@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // import { Button } from "bootstrap";
 import { Col, Container, Row } from 'react-bootstrap';
+import { useEffect } from 'react';
 import CButton from '../../component/CButton';
 import Layout from '../../component/Layout';
 import information from '../../styles/information.module.scss';
@@ -9,7 +10,7 @@ import Input from '../../component/Input';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import CList from '../../component/CList';
-import useRouter from 'next/router';
+import {useRouter} from 'next/router';
 // import NavbarComponent from "../component/NavbarComponent";
 
 const PersonalInformation= () =>{
@@ -17,7 +18,7 @@ const PersonalInformation= () =>{
    const route = useRouter();
    useEffect(()=>{
       if(auth.token!==null){
-         route.replace('/profile/manage-phone-number');
+         route.replace('/profile/personal-information');
       }else{
          route.replace('/');
       }
