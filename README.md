@@ -70,20 +70,18 @@ npm install
 <br>
 
 ## ⛏️ Built Using
-
+- [NextJS](https://nextjs.org)
 - [Axios](https://www.npmjs.com/package/axios)
-- [native-base](https://nativebase.io)
-- [react-navigation](https://reactnavigation.org)
-- [react-native-firebase](https://www.npmjs.com/package/@react-native-firebase/app)
-- [react-vector-icons](https://oblador.github.io/react-native-vector-icons/)
+- [Bootstrap](https://www.npmjs.com/package/bootstrap)
+- [react-icons](https://www.npmjs.com/package/react-icons)
 - [react-redux](https://www.npmjs.com/package/react-redux)
 - [redux](https://www.npmjs.com/package/redux)
 - [redux-logger](https://www.npmjs.com/package/redux-logger)
 - [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware)
+- [react-bootstrap](https://react-bootstrap.github.io/)
+- [react-elastic-carousel](https://www.npmjs.com/package/react-elastic-carousel)
 - [redux-persist](https://www.npmjs.com/package/redux-persist)
-- [react-native-push-motifications](https://www.npmjs.com/package/react-native-push-notification)
-- [react-native-image-picker](https://github.com/react-native-image-picker/react-native-image-picker)
-- [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob)
-- [rn-bootsplash](https://github.com/zoontek/react-native-bootsplash)
-- [react-native-dotenv](https://www.npmjs.com/package/react-native-dotenv)
+- [chartjs](https://www.chartjs.org)
+- [react-pin-input](https://www.npmjs.com/package/react-pin-input)
+- [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)
 <br>
