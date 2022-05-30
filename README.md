@@ -1,34 +1,89 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+   <img src=https://user-images.githubusercontent.com/44119106/171010473-7bb6f931-3493-43b5-98ff-1fbdafe00b42.png />
+</div>
 
-## Getting Started
+<h1>On-Wallet</h1>
 
-First, run the development server:
+<p>
+On Wallet is an application that makes it easier for users to make transactions such as top up money and transfer money to other users.</p>
+<br>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
+## 📍 About
+
+Repository Website On-Wallet
+
+<br>
+
+## 📌 How To Install?
+
+- Clone This Repo
+
+```
+git clone https://github.com/marsellavaleria19/onwallet-frontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Go To Folder Repo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+cd onwallet-frontend
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Install Module
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm install
+```
+- Copy env.example file and rename to .env.class file
+- Open .env.class file and filled setting in .env.class file
+ <table>
+   <tr>
+      <th>CONFIG</th>
+      <th>DESCRPTION</th>
+      <th>REMARKS</th>
+   </tr>
+   <tr>
+      <td>NEXT_PUBLIC_APP_URL</td>
+      <td>filled with api domain</td>
+      <td>example : https://fw5-zwallet.herokuapp.com (my api domain) </td>
+   </tr>
+   <tr>
+      <td>NEXT_PUBLIC_CALLBACK_URL</td>
+      <td>filled with website domain</td>
+      <td>example : https://onwallet.netlify.app/</td>
+   </tr>
+  </table>
+  
+- Type ``` npm run dev ``` To Start The Project
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+## 🔎 Preview Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  <span>
+    <img src="https://user-images.githubusercontent.com/44119106/171023730-22ca6e3c-4c31-4e12-b7fe-e87bea90dda2.png" width="415"/>
+    <img src="https://user-images.githubusercontent.com/44119106/171017551-8f76c47b-c4bf-49f5-98cb-dc9bbaf92461.png" width="415"/>
+    <img src="https://user-images.githubusercontent.com/44119106/171023200-cb1557a1-e2f6-4b0a-bb14-01288f7f0703.png" width="415"/>
+    <img src="https://user-images.githubusercontent.com/44119106/171023409-ef8bbfdb-f157-489d-99e6-e264c761644d.png" width="415"/>
+    <br/>
+  </span>
+<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ⛏️ Built Using
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Axios](https://www.npmjs.com/package/axios)
+- [native-base](https://nativebase.io)
+- [react-navigation](https://reactnavigation.org)
+- [react-native-firebase](https://www.npmjs.com/package/@react-native-firebase/app)
+- [react-vector-icons](https://oblador.github.io/react-native-vector-icons/)
+- [react-redux](https://www.npmjs.com/package/react-redux)
+- [redux](https://www.npmjs.com/package/redux)
+- [redux-logger](https://www.npmjs.com/package/redux-logger)
+- [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware)
+- [redux-persist](https://www.npmjs.com/package/redux-persist)
+- [react-native-push-motifications](https://www.npmjs.com/package/react-native-push-notification)
+- [react-native-image-picker](https://github.com/react-native-image-picker/react-native-image-picker)
+- [rn-fetch-blob](https://www.npmjs.com/package/rn-fetch-blob)
+- [rn-bootsplash](https://github.com/zoontek/react-native-bootsplash)
+- [react-native-dotenv](https://www.npmjs.com/package/react-native-dotenv)
+<br>
