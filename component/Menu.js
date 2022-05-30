@@ -39,10 +39,53 @@ const Menu = ()=>{
    };
 
    return(
-      <div>
-         <div className={`${menu.menu}`}>
+      <>
+         <style jsx>
+            {`
+            .menu {
+               background-color: #FFFFFF;
+               box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+               border-radius: 25px;
+               width : 100%;
+               min-height: 830px;
+               border: 1px solid  #F73D93;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+            }
+            .menuItem{
+               margin-top: 70px;
+               list-style: none;
+            }
+            
+            .menuItem li{
+                font-size: 18px;
+                margin-top: 52px;
+            }
+            
+            
+            .menuItem li:hover{
+                font-size: 18px;
+                padding-left: 45px;
+                font-weight: 600;
+            }
+            
+            .menuItem li a{
+                font-size: 18px;
+                margin-top: 52px;
+                width:100%;
+            }
+            
+            .menuItem li a.active{
+                font-weight: 700;
+                border-left: 2px solid #F73D93;
+                padding-left:15px;
+            }
+        `}
+         </style>
+         <div className='menu'>
             <div className='me-5 ms-5'>
-               <ul className={`${menu.menuItem}`}>
+               <ul className='menuItem'>
                   {
                      listMenu.map(item => {
                         const Icon = item.icon;
@@ -64,16 +107,7 @@ const Menu = ()=>{
                <CButton onClick={handleLogout} className={menu.buttonLogout}>Logout</CButton>
             </div>
          </div>
-      </div>
-      
-    
-   // <Nav defaultActiveKey="/home" className={`${menu.menu} flex-column`}>
-   //     <Nav.Link className={`${menu.navLink} mt-5 mb-5`} href="/home">Dashboard</Nav.Link>
-   //     <Nav.Link className={`${menu.navLink} mb-5`} eventKey="link-1">Transfer</Nav.Link>
-   //     <Nav.Link className={`${menu.navLink} mb-5`} eventKey="link-2">Topup</Nav.Link>
-   //     <Nav.Link className={`${menu.navLink} mb-5`} eventKey="link-2">Profile</Nav.Link>
-   //     <Nav.Link className={`${menu.navLink} mb-5`} eventKey="link-2">Logout</Nav.Link>
-   // </Nav>
+      </>
    );
 };
 
