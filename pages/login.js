@@ -99,7 +99,7 @@ const Login = () =>{
                <div className="ms-3 me-3 mt-5">
                   <div className="fs-1 text-primary fw-bold">Start Accessing Banking Needs
                             With All Devices and All Platforms With 30.000+ Users</div>
-                  <div className="fs-5 text-primary mt-5">Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</div>
+                  <div className="fs-5 text-primary mt-5">Transfering money is eassier than ever, you can access On-Wallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</div>
                   <div className="mt-5">
                      <CModalLoading show={showModalLoading} close={handleCloseLoading}/>
                      {
